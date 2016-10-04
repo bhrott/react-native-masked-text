@@ -1,0 +1,32 @@
+{
+  "name": "react-native-masked-text",
+  "version": "0.1.0",
+  "description": "Text and TextInput with mask for React Native applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benhurott/react-native-masked-text.git"
+  },
+  "keywords": [
+    "mask",
+    "text",
+    "textinput",
+    "react-native"
+  ],
+  "author": "Ben-hur Santos Ott",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benhurott/react-native-masked-text/issues"
+  },
+  "homepage": "https://github.com/benhurott/react-native-masked-text#readme",
+	"dependencies": {
+		"vanilla-masker": "1.0.9"
+	},
+  "peerDependencies": {
+		"react": "15.3.2",
+    "react-native": "0.34.1"
+  }
+}
