@@ -75,7 +75,7 @@ Ex: `<TextInputMask type={'money'} options={{ mask: 'AAAA-9' }} />`
 Use this component to display Text with formated mask.
 <br />
 Import the lib: <br />
-`import {TextInputMask} from 'react-native-text-mask'`
+`import {TextMask} from 'react-native-text-mask'`
 
 And now you can use the component:
 ```
@@ -95,6 +95,37 @@ The same of *TextInputMask*, but for React-Native *Text* component instead *Text
 ### Methods
 `getElement()`: return the instance of *Text* component.
 
+
+## Extra (MaskService)
+If you want, we expose the `MaskService`. You can use it:
+
+```
+import {MaskService} from 'react-native-text-mask'
+
+let maskService = new MaskService();
+
+let money = maskService.toMoney(1234, {
+	unit: 'US$',
+	separator: '.'
+});
+
+```
+
+**Methods**
+* toMoney(number, options)
+	* number: Number
+	* options: Object (same for TextInputMask type=money)
+* toCpf(value)
+	* value: String or Number
+* toZipCode(value)
+	* value: String or Number
+* toNumber(text)
+	* text: String
+* toCelPhone(value)
+	* value: String or Number
+* toCustom(text, options)
+	* text: String
+	* options: Object (same for TextInputMask type=custom)
 
 ##Roadmap
 * Masked raw Text (for display only)
