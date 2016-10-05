@@ -128,6 +128,5 @@ let money = maskService.toMoney(1234, {
 	* options: Object (same for TextInputMask type=custom)
 
 ##Roadmap
-* Masked raw Text (for display only)
 * Phone number (for other contries)
-* Possibility to change custom map on text-change.
+* Possibility to change custom mask on text-change.
