@@ -9,16 +9,14 @@ This is a simple masked text (normal text and input text) component for React-Na
 Thanks to [vanilla-masker](https://github.com/BankFacil/vanilla-masker) =).
 
 ## Supported Versions
-We develop this lib on the following versions of react-native:
-* react: 15.3.2 or higher
-* react-native: 0.34.1 or higher
+React-native: 0.32.0 or higher
 
 ## Install
 `npm install react-native-masked-text --save`
 
 ## Usage (TextInputMask)
 After install, import the lib: <br />
-`import {TextInputMask} from 'rreact-native-masked-text'`
+`import {TextInputMask} from 'react-native-masked-text'`
 
 And now you can use the component:
 ```
