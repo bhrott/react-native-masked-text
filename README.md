@@ -1,4 +1,4 @@
-# react-native-text-mask
+# react-native-masked-text
 
 WORK IN PROGRESS!
 
@@ -18,7 +18,7 @@ We develop this lib on the following versions of react-native:
 
 ## Usage (TextInputMask)
 After install, import the lib: <br />
-`import {TextInputMask} from 'react-native-text-mask'`
+`import {TextInputMask} from 'rreact-native-masked-text'`
 
 And now you can use the component:
 ```
@@ -75,7 +75,7 @@ Ex: `<TextInputMask type={'money'} options={{ mask: 'AAAA-9' }} />`
 Use this component to display Text with formated mask.
 <br />
 Import the lib: <br />
-`import {TextMask} from 'react-native-text-mask'`
+`import {TextMask} from 'react-native-masked-text'`
 
 And now you can use the component:
 ```
@@ -100,7 +100,7 @@ The same of *TextInputMask*, but for React-Native *Text* component instead *Text
 If you want, we expose the `MaskService`. You can use it:
 
 ```
-import {MaskService} from 'react-native-text-mask'
+import {MaskService} from 'react-native-masked-text'
 
 let maskService = new MaskService();
 
