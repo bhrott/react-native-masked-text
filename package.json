@@ -22,9 +22,6 @@
     "url": "https://github.com/benhurott/react-native-masked-text/issues"
   },
   "homepage": "https://github.com/benhurott/react-native-masked-text#readme",
-	"dependencies": {
-		"vanilla-masker": "1.0.9"
-	},
   "peerDependencies": {
     "react-native": ">=0.32.0"
   }

@@ -19,7 +19,7 @@ After install, import the lib: <br />
 `import {TextInputMask} from 'react-native-masked-text'`
 
 And now you can use the component:
-```
+``` jsx
 <View style={styles.container}>
     <TextInputMask style={styles.input}
 				   type={'zip-code'}
@@ -76,7 +76,7 @@ Import the lib: <br />
 `import {TextMask} from 'react-native-masked-text'`
 
 And now you can use the component:
-```
+``` jsx
 <View style={styles.container}>
 	<TextMask style={styles.input}
 			  type={'zip-code'}
@@ -97,7 +97,7 @@ The same of *TextInputMask*, but for React-Native *Text* component instead *Text
 ## Extra (MaskService)
 If you want, we expose the `MaskService`. You can use it:
 
-```
+``` javascript
 import {MaskService} from 'react-native-masked-text'
 
 let maskService = new MaskService();
