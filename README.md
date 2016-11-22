@@ -21,11 +21,8 @@ After install, import the lib: <br />
 And now you can use the component:
 ``` jsx
 <View style={styles.container}>
-    <TextInputMask style={styles.input}
-				   type={'zip-code'}
-				   options={/* component options */}
-				   value={this.state.yourValueProp}
-				   onChangeText={(text) => this.yourFunction(text)} />
+    <TextInputMask type={'zip-code'}
+				   options={/* component options */} />
 </View>
 ```
 
@@ -35,7 +32,7 @@ And now you can use the component:
 	* *zip-code*: use the mask `99999-999` and `numeric` keyboard.
 	* *only-numbers*: accept only numbers on field with `numeric` keyboard.
 	* *money*: use the mask `R$ 0,00` on the field with `numeric` keyboard. It accepts options (see later in this doc).
-	* *cel-phone*: use the mast `(99) 9999-9999` or `(99) 99999-9999` (changing automaticaly by length).
+	* *cel-phone*: use the mast `(99) 9999-9999` or `(99) 99999-9999` (changing automaticaly by length). It accepts options (see later in this doc).
 	* *custom*: use your custom mask (see the options props later in this doc).
 * **TextInput Props**
 	* You can use the native props of TextInput, with this in mind:
@@ -56,6 +53,13 @@ For `type={'money'}` <br />
 
 Ex: `<TextInputMask type={'money'} options={{ unit: 'US$' }} />`
 
+
+for `type={'cel-phone'}` <br />
+* *options={...}*
+	* `withDDD` (Boolean, default true): if the ddd will be include in the mask.
+	* `dddMask` (String, default '(99) '): the default mask applied if `withDDD` is true.
+
+
 For `type={'custom'}` <br />
 * *options={...}*
 	* `mask` (String, default ''): your mask template.
@@ -63,7 +67,7 @@ For `type={'custom'}` <br />
 		* `A`: accept alpha.
 		* `S`: accept alphanumeric.
 
-Ex: `<TextInputMask type={'money'} options={{ mask: 'AAAA-9' }} />`
+Ex: `<TextInputMask type={'custom'} options={{ mask: 'AAAA-9' }} />`
 
 ### Methods
 `getElement()`: return the instance of *TextInput* component.
@@ -78,10 +82,8 @@ Import the lib: <br />
 And now you can use the component:
 ``` jsx
 <View style={styles.container}>
-	<TextMask style={styles.input}
-			  type={'zip-code'}
-			  options={/* component options */}
-			  value={this.state.yourValueProp} />
+	<TextMask type={'zip-code'}
+			  options={/* component options */} />
 </View>
 ```
 
@@ -119,8 +121,9 @@ let money = maskService.toMoney(1234, {
 	* value: String or Number
 * toNumber(text)
 	* text: String
-* toCelPhone(value)
+* toCelPhone(value, options)
 	* value: String or Number
+	* options: Object (same for TextInputMask type=cel-phone)
 * toCustom(text, options)
 	* text: String
 	* options: Object (same for TextInputMask type=custom)

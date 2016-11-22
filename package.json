@@ -1,6 +1,6 @@
 {
   "name": "react-native-masked-text",
-  "version": "0.3.7",
+  "version": "0.4.0",
   "description": "Text and TextInput with mask for React Native applications",
   "main": "index.js",
   "scripts": {
