@@ -110,6 +110,54 @@ test('12341234123 toCelPhone results (12) 34123-4123', () => {
     expect(maskedResult).toBe(maskedValue);
 });
 
+test('12345678 toCelPhone withDDD:false results 1234-5678', () => {
+    let maskService = new MaskService();
+    let valueToMask = '12345678';
+    let maskedValue = '1234-5678';
+
+    let maskedResult = maskService.toCelPhone(valueToMask, {
+        withDDD: false
+    });
+
+    expect(maskedResult).toBe(maskedValue);
+});
+
+test('123456789 toCelPhone withDDD:false results 12345-6789', () => {
+    let maskService = new MaskService();
+    let valueToMask = '123456789';
+    let maskedValue = '12345-6789';
+
+    let maskedResult = maskService.toCelPhone(valueToMask, {
+        withDDD: false
+    });
+
+    expect(maskedResult).toBe(maskedValue);
+});
+
+test('12312345678 toCelPhone dddMask (999) results (123) 1234-5678', () => {
+    let maskService = new MaskService();
+    let valueToMask = '12312345678';
+    let maskedValue = '(123) 1234-5678';
+
+    let maskedResult = maskService.toCelPhone(valueToMask, {
+        dddMask: '(999) '
+    });
+
+    expect(maskedResult).toBe(maskedValue);
+});
+
+test('123123456789 toCelPhone dddMask (999) results (123) 12345-6789', () => {
+    let maskService = new MaskService();
+    let valueToMask = '123123456789';
+    let maskedValue = '(123) 12345-6789';
+
+    let maskedResult = maskService.toCelPhone(valueToMask, {
+        dddMask: '(999) '
+    });
+
+    expect(maskedResult).toBe(maskedValue);
+});
+
 test('1234 toNumber results 1234', () => {
     let maskService = new MaskService();
     let valueToMask = '1234';
