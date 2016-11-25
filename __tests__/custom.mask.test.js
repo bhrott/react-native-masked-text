@@ -76,3 +76,39 @@ test('B345 with mask AS#99 results B3#45', () => {
 
     expect(received).toBe(expected);
 });
+
+test('DWARF with mask AAAAA and custom validator results DWARF and is valid', () => {
+    var mask = new CustomMask();
+    var input = 'DWARF';
+    var settings = {
+        mask: 'AAAAA'
+    };
+    var validator = (value, settings) => {
+        return value === 'DWARF';
+    };
+
+    var expected = 'DWARF';
+    var received = mask.getValue(input, settings);
+    var isValid = mask.validate(input, settings);
+
+    expect(expected).toBe(received);
+    expect(isValid).toBe(true);
+});
+
+test('ELF with mask AAAAA and custom validator results DWARF and is invalid', () => {
+    var mask = new CustomMask();
+    var input = 'ELF';
+    var settings = {
+        mask: 'AAAAA'
+    };
+    var validator = (value, settings) => {
+        return value === 'DWARF';
+    };
+
+    var expected = 'ELF';
+    var received = mask.getValue(input, settings);
+    var isValid = mask.validate(input, settings);
+
+    expect(expected).toBe(received);
+    expect(isValid).toBe(true);
+});
