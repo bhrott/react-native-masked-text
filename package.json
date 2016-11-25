@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/benhurott/react-native-masked-text/issues"
   },
-  "homepage": "https://github.com/benhurott/react-native-masked-text#readme"
+  "homepage": "https://github.com/benhurott/react-native-masked-text#readme",
+  "dependencies": {
+    "moment": "^2.16.0"
+  }
 }
