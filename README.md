@@ -95,10 +95,12 @@ Ex:
 ```
 
 ### Methods
-`getElement()`: return the instance of *TextInput* component.
-`isValid()`: if the value inputed is valid for the mask.
-	* `type=datetime` and `value=99-99-9999` will return false (the date is invalid, the mask doesn`t match).
-	* The following masks have validators: `datetime`, `cpf`, `cnpj`, `zip-code` length.
+`getElement()`: return the instance of *TextInput* component. <br />
+
+`isValid()`: if the value inputed is valid for the mask. <br />
+
+* `type=datetime` and `value=99-99-9999` will return false (the date is invalid, the mask doesn`t match).
+* The following masks have validators: `datetime`, `cpf`, `cnpj`, `zip-code` length.
 
 
 ## Usage (TextMask)
