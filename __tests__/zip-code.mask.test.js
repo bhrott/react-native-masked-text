@@ -18,7 +18,7 @@ test('11111111 results 11111-111', () => {
 test('1111111 results 11111-11', () => {
     var mask = new ZipCodeMask();
     var expected = '11111-11';
-    var received = mask.getValue('11111111');
+    var received = mask.getValue('1111111');
 
     expect(received).toBe(expected);
 });
