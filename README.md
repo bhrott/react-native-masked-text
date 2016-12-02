@@ -198,16 +198,16 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
-# 1.1.0
+## 1.1.0
 * Adding credit-card mask.
 * Refactoring base mask to contain helpfull functions.
 
-# 1.0.0
+## 1.0.0
 * Adding datetime and cnpj masks.
 * [Breaking Change] Refactoring MaskService.
 * Separate mask handlers for better extensibility.
 * Adding tests for all mask handlers.
 * Refactoring Components for use new mask handlers.
 
-# 0.3.6
+## 0.3.6
 * Fix vanilla-mask path on windows.
