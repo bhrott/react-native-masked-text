@@ -13,19 +13,42 @@ React-native: 0.32.0 or higher
 `npm install react-native-masked-text --save`
 
 ## Usage (TextInputMask)
-After install, import the lib: <br />
-`import {TextInputMask} from 'react-native-masked-text'`
+```jsx
+import React, {Component} from 'react';
 
-And now you can use the component:
-``` jsx
-<View style={styles.container}>
-    <TextInputMask type={'zip-code'}
-				   options={/* component options */} />
-</View>
+// import the component
+import {TextInputMask} from 'react-native-masked-text';
+
+export default class MyComponent extends Component {
+	constructor(props) {
+		super(props);
+	}
+
+	isValid() {
+		// isValid method returns if the inputed value is valid.
+		// Ex: if you input 40/02/1990 30:20:20, it will return false
+		//	   because in this case, the day and the hour is invalid.
+		let valid = this.refs['myDateText'].isValid();
+	}
+
+	render() {
+		// the type is required but options is required only for some specific types.
+		return (
+			<TextInputMask 
+				ref={'myDateText'}
+				type={'datetime'}
+				options={{
+					format: 'DD-MM-YYYY HH:mm:ss'
+				}} />
+		);
+	}
+}
+
 ```
 
 ### Props
-* **type**
+**type**
+	* *credit-card*: use the mask 9999 9999 9999 9999. It accepts options (see later in this doc).
 	* *cpf*: use the mask `999.999.999-99` and `numeric` keyboard.
 	* *cnpj*: use the mask `99.999.999/9999-99` and `numeric` keyboard.
 	* *zip-code*: use the mask `99999-999` and `numeric` keyboard.
@@ -34,14 +57,17 @@ And now you can use the component:
 	* *cel-phone*: use the mask `(99) 9999-9999` or `(99) 99999-9999` (changing automaticaly by length). It accepts options (see later in this doc).
 	* *datetime*: use datetime mask with moment format (default DD/MM/YYYY HH:mm:ss). It accepts options (see later in this doc).
 	* *custom*: use your custom mask (see the options props later in this doc).
-* **TextInput Props**
+**TextInput Props**
 	* You can use the native props of TextInput, with this in mind:
 		* onChangeText is intercepted by component.
 		* value is intercepted by component.
 		* if you pass keyboardType, it will override the keyboardType of masked component.
 
 
-**Custom Props** <br />
+**Options** <br />
+Some types accept options, use it like this: `<TextInputMask type={'money'} options={{ unit: 'US$' }} />`
+
+
 For `type={'money'}` <br />
 * *options={...}*
 	* `precision` (Number, default 2): the decimal places.
@@ -50,9 +76,6 @@ For `type={'money'}` <br />
 	* `unit`: (String, default 'R$'): the prefix text.
 	* `suffixUnit` (String, default ''): the suffix text.
 	* `zeroCents` (Boolean, default false): if must show cents.
-
-Ex: `<TextInputMask type={'money'} options={{ unit: 'US$' }} />`
-
 
 For `type={'cel-phone'}` <br />
 * *options={...}*
@@ -82,39 +105,56 @@ For `type={'custom'}` <br />
 			* `value`: current value.
 			* `settings`: current settings
 
-Ex: 
-```jsx
-<TextInputMask type={'custom'} 
-			   options={{ 
-				   mask: 'AAAA-9',
-				   validator: (value, settings) => {
-					   //...
-					   return true;
-				   } 
-				}} />
-```
+For `type={'credit-card'}` <br />
+* *options={...}*
+	* `obfuscated` (Boolean, default false): if the mask must be `9999 **** **** 9999`
+
 
 ### Methods
-`getElement()`: return the instance of *TextInput* component. <br />
 
-`isValid()`: if the value inputed is valid for the mask. <br />
-
-* `type=datetime` and `value=99-99-9999` will return false (the date is invalid, the mask doesn`t match).
-* The following masks have validators: `datetime`, `cpf`, `cnpj`, `zip-code` length.
+* `getElement()`: return the instance of *TextInput* component.
+* `isValid()`: if the value inputed is valid for the mask.
+	* *credit-card*: return true if the mask is complete.
+	* *cpf*: return true if the mask is complete and cpf is valid.
+	* *cnpj*: return true if the mask is complete and cnpj is valid.
+	* *zip-code*: return true if the mask is complete.
+	* *only-numbers*: always returns true.
+	* *money*: always returns true.
+	* *cel-phone*: return true if the mask is complete.
+	* *datetime*: return true if the date value is valid for format.
+	* *custom*: use custom validation, if it not exist, always returns true.
 
 
 ## Usage (TextMask)
-Use this component to display Text with formated mask.
-<br />
-Import the lib: <br />
-`import {TextMask} from 'react-native-masked-text'`
 
-And now you can use the component:
-``` jsx
-<View style={styles.container}>
-	<TextMask type={'zip-code'}
-			  options={/* component options */} />
-</View>
+```jsx
+import React, {Component} from 'react';
+
+// import the component
+import {TextMask} from 'react-native-masked-text';
+
+export default class MyComponent extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			text: '4567123409871234'
+		};
+	}
+
+	render() {
+		// the type is required but options is required only for some specific types.
+		// the sample below will output 4567 **** **** 1234
+		return (
+			<TextMask 
+				value={this.state.text}
+				type={'credit-card'}
+				options={{
+					obfuscated: true
+				}} />
+		);
+	}
+}
+
 ```
 
 ### Props
@@ -155,6 +195,9 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+# 1.1.0
+* Adding credit-card mask.
+* Refactoring base mask to contain helpfull functions.
 
 # 1.0.0
 * Adding datetime and cnpj masks.
