@@ -48,6 +48,7 @@ export default class MyComponent extends Component {
 
 ### Props
 **type**
+	
 	* *credit-card*: use the mask 9999 9999 9999 9999. It accepts options (see later in this doc).
 	* *cpf*: use the mask `999.999.999-99` and `numeric` keyboard.
 	* *cnpj*: use the mask `99.999.999/9999-99` and `numeric` keyboard.
@@ -57,7 +58,9 @@ export default class MyComponent extends Component {
 	* *cel-phone*: use the mask `(99) 9999-9999` or `(99) 99999-9999` (changing automaticaly by length). It accepts options (see later in this doc).
 	* *datetime*: use datetime mask with moment format (default DD/MM/YYYY HH:mm:ss). It accepts options (see later in this doc).
 	* *custom*: use your custom mask (see the options props later in this doc).
+
 **TextInput Props**
+	
 	* You can use the native props of TextInput, with this in mind:
 		* onChangeText is intercepted by component.
 		* value is intercepted by component.
