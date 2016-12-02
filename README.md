@@ -49,22 +49,22 @@ export default class MyComponent extends Component {
 ### Props
 **type**
 	
-	* *credit-card*: use the mask 9999 9999 9999 9999. It accepts options (see later in this doc).
-	* *cpf*: use the mask `999.999.999-99` and `numeric` keyboard.
-	* *cnpj*: use the mask `99.999.999/9999-99` and `numeric` keyboard.
-	* *zip-code*: use the mask `99999-999` and `numeric` keyboard.
-	* *only-numbers*: accept only numbers on field with `numeric` keyboard.
-	* *money*: use the mask `R$ 0,00` on the field with `numeric` keyboard. It accepts options (see later in this doc).
-	* *cel-phone*: use the mask `(99) 9999-9999` or `(99) 99999-9999` (changing automaticaly by length). It accepts options (see later in this doc).
-	* *datetime*: use datetime mask with moment format (default DD/MM/YYYY HH:mm:ss). It accepts options (see later in this doc).
-	* *custom*: use your custom mask (see the options props later in this doc).
+*credit-card*: use the mask 9999 9999 9999 9999. It accepts options (see later in this doc). <br />
+*cpf*: use the mask `999.999.999-99` and `numeric` keyboard. <br />
+*cnpj*: use the mask `99.999.999/9999-99` and `numeric` keyboard. <br />
+*zip-code*: use the mask `99999-999` and `numeric` keyboard. <br />
+*only-numbers*: accept only numbers on field with `numeric` keyboard. <br />
+*money*: use the mask `R$ 0,00` on the field with `numeric` keyboard. It accepts options (see later in this doc). <br />
+*cel-phone*: use the mask `(99) 9999-9999` or `(99) 99999-9999` (changing automaticaly by length). It accepts options (see later in this doc). <br />
+*datetime*: use datetime mask with moment format (default DD/MM/YYYY HH:mm:ss). It accepts options (see later in this doc). <br />
+*custom*: use your custom mask (see the options props later in this doc). <br />
 
-**TextInput Props**
-	
-	* You can use the native props of TextInput, with this in mind:
-		* onChangeText is intercepted by component.
-		* value is intercepted by component.
-		* if you pass keyboardType, it will override the keyboardType of masked component.
+**TextInput Props** <br />
+You can use the native props of TextInput, with this in mind:
+
+* onChangeText is intercepted by component.
+* value is intercepted by component.
+* if you pass keyboardType, it will override the keyboardType of masked component.
 
 
 **Options** <br />
