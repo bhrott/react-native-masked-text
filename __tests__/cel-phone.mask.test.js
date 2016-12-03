@@ -95,3 +95,31 @@ test('1237777777 dddMask=999  is not valid', () => {
 
     expect(isValid).toBe(false);
 });
+
+test('5188888888 results (51) 8888-8888 and raw value 5188888888', () => {
+    var mask = new CelPhoneMask();
+    var expected = '(51) 8888-8888';
+    var received = mask.getValue('5188888888');
+
+    var expectedRawValue = '5188888888';
+    var receivedRawValue = mask.getRawValue(received);
+
+    expect(received).toBe(expected);
+    expect(receivedRawValue).toBe(expectedRawValue);
+});
+
+test('123777777777 dddMask=999  results 123 77777-7777 and raw value 123777777777', () => {
+    var mask = new CelPhoneMask();
+    var expected = '123 77777-7777';
+    var received = mask.getValue('123777777777', {
+        dddMask: '999 '
+    });
+
+    var expectedRawValue = '123777777777';
+    var receivedRawValue = mask.getRawValue(received, {
+        dddMask: '999 '
+    });
+
+    expect(received).toBe(expected);
+    expect(receivedRawValue).toBe(expectedRawValue);
+});
