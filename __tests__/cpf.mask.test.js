@@ -52,3 +52,15 @@ test('1234567890 results 123.456.789-0 and is not valid', () => {
     expect(received).toBe(expected);
     expect(isValid).toBe(false);
 });
+
+test('12312312356 results 123.123.123-56 and raw value 12312312356', () => {
+    var mask = new CpfMask();
+    var expected = '123.123.123-56';
+    var received = mask.getValue('12312312356');
+
+    var expectedRawValue = '12312312356';
+    var receivedRawValue = mask.getRawValue(received);
+
+    expect(received).toBe(expected);
+    expect(receivedRawValue).toBe(expectedRawValue);
+});

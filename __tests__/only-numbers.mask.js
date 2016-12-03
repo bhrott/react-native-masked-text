@@ -30,3 +30,15 @@ test('abc results ', () => {
 
     expect(received).toBe(expected);
 });
+
+test('1 results 1 and raw value 1', () => {
+    var mask = new OnlyNumbersMask();
+    var expected = '1';
+    var received = mask.getValue('1');
+
+    var expectedRawValue = '1';
+    var receivedRawValue = mask.getRawValue(received);
+
+    expect(received).toBe(expected);
+    expect(receivedRawValue).toBe(expectedRawValue);
+});

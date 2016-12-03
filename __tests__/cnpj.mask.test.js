@@ -52,3 +52,15 @@ test('7988526200013 results 79.885.262/0001-3 and is not valid', () => {
     expect(received).toBe(expected);
     expect(isValid).toBe(false);
 });
+
+test('79885262000130 results 79.885.262/0001-30 and raw value 79885262000130', () => {
+    var mask = new CnpjMask();
+    var expected = '79.885.262/0001-30';
+    var received = mask.getValue('79885262000130');
+
+    var expectedRawValue = '79885262000130';
+    var receivedRawValue = mask.getRawValue(received);
+
+    expect(received).toBe(expected);
+    expect(receivedRawValue).toBe(expectedRawValue);
+});
