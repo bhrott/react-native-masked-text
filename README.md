@@ -198,6 +198,9 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.1.1
+* Fixing toolbox-service reference (thanks to [ziftinpeki](https://github.com/ziftinpeki)).
+
 ## 1.1.0
 * Adding credit-card mask.
 * Refactoring base mask to contain helpfull functions.
