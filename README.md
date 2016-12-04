@@ -29,6 +29,10 @@ export default class MyComponent extends Component {
 		// Ex: if you input 40/02/1990 30:20:20, it will return false
 		//	   because in this case, the day and the hour is invalid.
 		let valid = this.refs['myDateText'].isValid();
+
+		// get converted value. Using type=datetime, it returns the moment object.
+		// If it's using type=money, it returns a Number object.
+		let rawValue = this.refs['myDateText'].getRawValue();
 	}
 
 	render() {
@@ -107,6 +111,10 @@ For `type={'custom'}` <br />
 		* The function receives 2 parameters:
 			* `value`: current value.
 			* `settings`: current settings
+	* `getRawValue` (Function, default returns the current value): the function that's invoked when `getRawValue` method from component is called.
+		* The function receives 2 parameters:
+			* `value`: current value.
+			* `settings`: current settings
 
 For `type={'credit-card'}` <br />
 * *options={...}*
@@ -126,6 +134,16 @@ For `type={'credit-card'}` <br />
 	* *cel-phone*: return true if the mask is complete.
 	* *datetime*: return true if the date value is valid for format.
 	* *custom*: use custom validation, if it not exist, always returns true.
+* `getRawValue()`: get the converted value of mask.
+	* *credit-card*: return the array with the value parts. Ex: `1234 1234 1234 1234` returns `[1234, 1234, 1234, 1234]`.
+	* *cpf*: return the value without mask.
+	* *cnpj*: return the value without mask.
+	* *zip-code*: return the value without mask.
+	* *only-numbers*: return the value without mask.
+	* *money*: return the Number value. Ex: `R$ 1.234,56` returns `1234.56`.
+	* *cel-phone*: return the value without mask.
+	* *datetime*: return the `moment` object for the date and format.
+	* *custom*: use custom method (passed in options). If it not exists, returns the current value.
 
 
 ## Usage (TextMask)
@@ -198,6 +216,9 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.2.0
+* Adding `getRawValue`.
+
 ## 1.1.1
 * Fixing toolbox-service reference (thanks to [ziftinpeki](https://github.com/ziftinpeki)).
 

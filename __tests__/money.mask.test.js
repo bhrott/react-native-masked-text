@@ -133,4 +133,56 @@ test('US$ config with value 1234567 results US$ 12,345.67', () => {
     });
 
     expect(received).toBe(expected);
-})
+});
+
+test('1 results R$ 0,01 and raw value 0.01', () => {
+    var mask = new MoneyMask();
+    var expected = 'R$ 0,01';
+    var received = mask.getValue('1');
+
+    var expectedRawValue = 0.01;
+    var receivedRawValue = mask.getRawValue(received);
+
+    expect(received).toBe(expected);
+    expect(receivedRawValue).toBe(expectedRawValue);
+});
+
+test('111111 results R$ 1.111,11 and raw value 1111.11', () => {
+    var mask = new MoneyMask();
+    var expected = 'R$ 1.111,11';
+    var received = mask.getValue('111111');
+
+    var expectedRawValue = 1111.11;
+    var receivedRawValue = mask.getRawValue(received);
+
+    expect(received).toBe(expected);
+    expect(receivedRawValue).toBe(expectedRawValue);
+});
+
+test('1 zeroCents results R$ 1,00 and raw value 1', () => {
+    var mask = new MoneyMask();
+    var expected = 'R$ 1,00';
+    var received = mask.getValue('1', {
+        zeroCents: true
+    });
+
+    var expectedRawValue = 1;
+    var receivedRawValue = mask.getRawValue(received);
+
+    expect(received).toBe(expected);
+    expect(receivedRawValue).toBe(expectedRawValue);
+});
+
+test('111111 delimiter , results R$ 1,111,11 and raw value 1111.11', () => {
+    var mask = new MoneyMask();
+    var expected = 'R$ 1,111,11';
+    var received = mask.getValue('111111', {
+        delimiter: ','
+    });
+
+    var expectedRawValue = 1111.11;
+    var receivedRawValue = mask.getRawValue(received);
+
+    expect(received).toBe(expected);
+    expect(receivedRawValue).toBe(expectedRawValue);
+});
