@@ -112,3 +112,22 @@ test('ELF with mask AAAAA and custom validator results DWARF and is invalid', ()
     expect(expected).toBe(received);
     expect(isValid).toBe(true);
 });
+
+test('123 with mask 999 results 123 and raw value 123(type Number)', () => {
+    var mask = new CustomMask();
+    var options = {
+        mask: '999',
+        getRawValue: function(maskedValue, settings) {
+            return Number(maskedValue);
+        }
+    };
+
+    var expected = '123';
+    var received = mask.getValue('123', options);
+
+    var expectedRawValue = 123;
+    var receivedRawValue = mask.getRawValue(received, options);
+
+    expect(received).toBe(expected);
+    expect(receivedRawValue).toBe(expectedRawValue);
+});

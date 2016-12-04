@@ -40,3 +40,15 @@ test('11111111 results 11111-111 and is not valid', () => {
 
     expect(isValid).toBe(true);
 });
+
+test('11111111 results 11111-111 and raw value 11111111', () => {
+    var mask = new ZipCodeMask();
+    var expected = '11111-111';
+    var received = mask.getValue('11111111');
+
+    var expectedRawValue = '11111111';
+    var receivedRawValue = mask.getRawValue(received);
+
+    expect(received).toBe(expected);
+    expect(receivedRawValue).toBe(expectedRawValue);
+});

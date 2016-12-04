@@ -1,4 +1,13 @@
 import { DatetimeMask } from '../lib/masks';
+var moment = require('moment');
+
+function compareMomentObj(dateTimeA, dateTimeB) {
+    var momentA = moment(dateTimeA,"DD/MM/YYYY");
+    var momentB = moment(dateTimeB,"DD/MM/YYYY");
+    if (momentA > momentB) return 1;
+    else if (momentA < momentB) return -1;
+    else return 0;
+}
 
 test('getType results datetime', () => {
     var expected = 'datetime';
@@ -79,4 +88,16 @@ test('01011990174030 with format DD/MM/YYYY HH:mm:ss results 01/01/1990 17:40:30
 
     expect(received).toBe(expected);
     expect(isValid).toBe(true);
+});
+
+test('01011990174030 with format DD/MM/YYYY HH:mm:ss results 01/01/1990 17:40:30 and raw value Date', () => {
+    var mask = new DatetimeMask();
+    var expected = '01/01/1990 17:40:30';
+    var received = mask.getValue('01011990174030');
+
+    var expectedRawValue = moment(received, 'DD/MM/YYYY HH:mm:ss', true);
+    var receivedRawValue = mask.getRawValue(received); 
+
+    expect(received).toBe(expected);
+    expect(compareMomentObj(receivedRawValue, expectedRawValue)).toBe(0);
 });
