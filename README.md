@@ -216,6 +216,9 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.2.1
+* Fix: fixing white space after unit on money mask.
+
 ## 1.2.0
 * Adding `getRawValue`.
 
