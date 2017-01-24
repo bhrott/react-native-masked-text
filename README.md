@@ -214,8 +214,14 @@ var money = MaskService.toMask('money', '123', {
 // money -> US$ 1.23
 ```
 
+## Throubleshooting
+* If the `es2015` error throw by babel, try run `react-native start --reset-cache`
+
 
 # Changelog
+## 1.2.2
+* Fix: fixing es2015 preset (thanks to [vagnercsouza](https://github.com/vagnercsouza), [barakcoh](https://github.com/barakcoh), Marvin Santos)
+
 ## 1.2.1
 * Fix: fixing white space after unit on money mask.
 
