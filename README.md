@@ -257,6 +257,9 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.3.1
+* Performance: adding check if the next value to be applied to the mask is equal as actual and prevent state change.
+
 ## 1.3.0
 * Feat: now you can check and prevent input text on `TextInputMask` using `checkText` prop.
 
