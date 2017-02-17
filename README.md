@@ -38,7 +38,7 @@ export default class MyComponent extends Component {
 	render() {
 		// the type is required but options is required only for some specific types.
 		return (
-			<TextInputMask 
+			<TextInputMask
 				ref={'myDateText'}
 				type={'datetime'}
 				options={{
@@ -52,7 +52,7 @@ export default class MyComponent extends Component {
 
 ### Props
 **type**
-	
+
 *credit-card*: use the mask 9999 9999 9999 9999. It accepts options (see later in this doc). <br />
 *cpf*: use the mask `999.999.999-99` and `numeric` keyboard. <br />
 *cnpj*: use the mask `99.999.999/9999-99` and `numeric` keyboard. <br />
@@ -62,6 +62,44 @@ export default class MyComponent extends Component {
 *cel-phone*: use the mask `(99) 9999-9999` or `(99) 99999-9999` (changing automaticaly by length). It accepts options (see later in this doc). <br />
 *datetime*: use datetime mask with moment format (default DD/MM/YYYY HH:mm:ss). It accepts options (see later in this doc). <br />
 *custom*: use your custom mask (see the options props later in this doc). <br />
+
+
+**onChangeText**
+
+Invoked after new value applied to mask.
+```jsx
+/**
+ * @param {String} text the text AFTER mask is applied.
+*/
+onChangeText(text) {
+	// ...
+}
+
+<TextInputMask
+	type={'only-numbers'}
+	onChangeText={this.onChangeText.bind(this)} />
+```
+
+
+**checkText**
+
+Allow you to check and prevent value to be inputed.
+
+```jsx
+/**
+ * @param {String} previous the previous text in the masked field.
+ * @param {String} next the next text that will be setted to field.
+ * @return {Boolean} return true if must accept the value.
+*/
+checkText(previous, next) {
+	return next === 'your valid value or other boolean condition';
+}
+
+<TextInputMask
+	type={'only-numbers'}
+	checkText={this.checkText.bind(this)} />
+```
+
 
 **TextInput Props** <br />
 You can use the native props of TextInput, with this in mind:
@@ -166,7 +204,7 @@ export default class MyComponent extends Component {
 		// the type is required but options is required only for some specific types.
 		// the sample below will output 4567 **** **** 1234
 		return (
-			<TextMask 
+			<TextMask
 				value={this.state.text}
 				type={'credit-card'}
 				options={{
@@ -219,6 +257,9 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.3.0
+* Feat: now you can check and prevent input text on `TextInputMask` using `checkText` prop.
+
 ## 1.2.2
 * Fix: fixing es2015 preset (thanks to [vagnercsouza](https://github.com/vagnercsouza), [barakcoh](https://github.com/barakcoh), Marvin Santos)
 
