@@ -257,6 +257,9 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.3.2
+* Fix: ignoring Jet Brains ide files (thanks to [Vlad-Zhukov](https://github.com/Vlad-Zhukov))
+
 ## 1.3.1
 * Performance: adding check if the next value to be applied to the mask is equal as actual and prevent state change.
 
