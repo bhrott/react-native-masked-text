@@ -108,6 +108,34 @@ You can use the native props of TextInput, with this in mind:
 * value is intercepted by component.
 * if you pass keyboardType, it will override the keyboardType of masked component.
 
+**TextInput Methods** <br />
+If you want to use the methods of the native TextInput, use the `getElement()` method:
+
+```jsx
+export default class App extends React.Component {
+	onGoFocus() {
+		// when you call getElement method, the instance of native TextInput will returned.
+		this.refs['myText'].getElement().focus();
+	}
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <View>
+					<TextInputMask ref='myText' type={'only-numbers'} style={styles.input}/>
+				</View>
+				<View>
+					<Button
+							onPress={this.onGoFocus.bind(this)}
+							title="Go Focus Hue"
+							color="#841584"
+						/>
+				</View>
+      </View>
+    );
+  }
+}
+```
 
 **Options** <br />
 Some types accept options, use it like this: `<TextInputMask type={'money'} options={{ unit: 'US$' }} />`
