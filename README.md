@@ -122,15 +122,15 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <View>
-					<TextInputMask ref='myText' type={'only-numbers'} style={styles.input}/>
-				</View>
-				<View>
-					<Button
-							onPress={this.onGoFocus.bind(this)}
-							title="Go Focus Hue"
-							color="#841584"
-						/>
-				</View>
+			<TextInputMask ref='myText' type={'only-numbers'} style={styles.input}/>
+		</View>
+		<View>
+			<Button
+				onPress={this.onGoFocus.bind(this)}
+				title="Go Focus Hue"
+				color="#841584"
+			/>
+		</View>
       </View>
     );
   }
