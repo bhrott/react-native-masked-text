@@ -285,6 +285,9 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.3.3
+* Update dependencies (thanks to [Vlad-Zhukov](https://github.com/Vlad-Zhukov))
+
 ## 1.3.2
 * Fix: ignoring Jet Brains ide files (thanks to [Vlad-Zhukov](https://github.com/Vlad-Zhukov))
 
