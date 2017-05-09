@@ -285,6 +285,10 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.3.4
+* Remove default value from mask to allow placeholder on text-input (thanks to [Cuong Hoang](https://github.com/cuonghv91)).
+	* Please, caution. This can cause some runtime breaking if you update to this version.
+
 ## 1.3.3
 * Update dependencies (thanks to [Vlad-Zhukov](https://github.com/Vlad-Zhukov))
 
