@@ -100,6 +100,23 @@ checkText(previous, next) {
 	checkText={this.checkText.bind(this)} />
 ```
 
+**customTextInput** <br />
+You can use this prop if you want custom text input instead native TextInput component:
+
+```jsx
+const Textfield = MKTextField.textfield()
+  .withPlaceholder('Text...')
+  .withStyle(styles.textfield)
+  .build();
+
+
+<TextInputMask
+	ref={'myDateText'}
+	type={'money'}
+	style={styles.input}
+	customTextInput={Textfield}
+	placeholder="Enter text to see events" />
+```
 
 **TextInput Props** <br />
 You can use the native props of TextInput, with this in mind:
@@ -285,6 +302,9 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.4.0
+* Adding `customTextInput` to allow other inputs instead native TextInput. (thank to [Hellon Canella](https://github.com/helloncanella))
+
 ## 1.3.4
 * Remove default value from mask to allow placeholder on text-input (thanks to [Cuong Hoang](https://github.com/cuonghv91)).
 	* Please, caution. This can cause some runtime breaking if you update to this version.
