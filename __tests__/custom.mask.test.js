@@ -131,3 +131,54 @@ test('123 with mask 999 results 123 and raw value 123(type Number)', () => {
     expect(received).toBe(expected);
     expect(receivedRawValue).toBe(expectedRawValue);
 });
+
+test('mask with custom translation and match', () => {
+	var mask = new CustomMask();
+	var options = {
+		mask: '999&AAA',
+		translation: {
+			'&': function(val) {
+				return ['#', '.', ':'].indexOf(val) >= 0 ? val : null;
+			}
+		}
+	}
+
+	var expected = '123#ABC';
+	var received = mask.getValue('123#ABC', options);
+
+	expect(received).toBe(expected);
+});
+
+test('mask with custom translation and not match', () => {
+	var mask = new CustomMask();
+	var options = {
+		mask: '999&AAA',
+		translation: {
+			'&': function(val) {
+				return ['#', '.', ':'].indexOf(val) >= 0 ? val : null;
+			}
+		}
+	}
+
+	var expected = '123';
+	var received = mask.getValue('123|ABC', options);
+
+	expect(received).toBe(expected);
+});
+
+test('mask with custom translation and optionals and matching', () => {
+	var mask = new CustomMask();
+	var options = {
+		mask: '999***AAA&',
+		translation: {
+			'&': function(val) {
+				return ['#', '.', ':'].indexOf(val) >= 0 ? val : null;
+			}
+		}
+	}
+
+	var expected = '123|% ABC.';
+	var received = mask.getValue('123|% ABC.', options);
+
+	expect(received).toBe(expected);
+});

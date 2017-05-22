@@ -51,7 +51,8 @@ export default class MyComponent extends Component {
 ```
 
 ### Props
-**type**
+
+#### type
 
 *credit-card*: use the mask 9999 9999 9999 9999. It accepts options (see later in this doc). <br />
 *cpf*: use the mask `999.999.999-99` and `numeric` keyboard. <br />
@@ -64,7 +65,7 @@ export default class MyComponent extends Component {
 *custom*: use your custom mask (see the options props later in this doc). <br />
 
 
-**onChangeText**
+#### onChangeText
 
 Invoked after new value applied to mask.
 ```jsx
@@ -81,7 +82,7 @@ onChangeText(text) {
 ```
 
 
-**checkText**
+#### checkText
 
 Allow you to check and prevent value to be inputed.
 
@@ -100,7 +101,8 @@ checkText(previous, next) {
 	checkText={this.checkText.bind(this)} />
 ```
 
-**customTextInput** <br />
+#### customTextInput
+
 You can use this prop if you want custom text input instead native TextInput component:
 
 ```jsx
@@ -118,14 +120,16 @@ const Textfield = MKTextField.textfield()
 	placeholder="Enter text to see events" />
 ```
 
-**TextInput Props** <br />
+#### TextInput Props
+
 You can use the native props of TextInput, with this in mind:
 
 * onChangeText is intercepted by component.
 * value is intercepted by component.
 * if you pass keyboardType, it will override the keyboardType of masked component.
 
-**TextInput Methods** <br />
+#### TextInput Methods
+
 If you want to use the methods of the native TextInput, use the `getElement()` method:
 
 ```jsx
@@ -154,11 +158,12 @@ export default class App extends React.Component {
 }
 ```
 
-**Options** <br />
+#### Options
+
 Some types accept options, use it like this: `<TextInputMask type={'money'} options={{ unit: 'US$' }} />`
 
 
-For `type={'money'}` <br />
+**For `type={'money'}`** <br />
 * *options={...}*
 	* `precision` (Number, default 2): the decimal places.
 	* `separator` (String, default ','): the decimal separator.
@@ -167,12 +172,12 @@ For `type={'money'}` <br />
 	* `suffixUnit` (String, default ''): the suffix text.
 	* `zeroCents` (Boolean, default false): if must show cents.
 
-For `type={'cel-phone'}` <br />
+**For `type={'cel-phone'}`** <br />
 * *options={...}*
 	* `withDDD` (Boolean, default true): if the ddd will be include in the mask.
 	* `dddMask` (String, default '(99) '): the default mask applied if `withDDD` is true.
 
-For `type={'datetime'}` <br />
+**For `type={'datetime'}`** <br />
 * *options={...}*
 	* `format` (String, default DD/MM/YYYY HH:mm:ss): moment date format. It accepts the following:
 		* DD/MM/YYYY HH:mm:ss
@@ -184,22 +189,64 @@ For `type={'datetime'}` <br />
 		* HH
 		* *You can use all of dates with `-` instead of `/` if you want*
 
-For `type={'custom'}` <br />
+**For `type={'custom'}`** <br />
 * *options={...}*
-	* `mask` (String, default ''): your mask template.
-		* `9`: accept digit.
-		* `A`: accept alpha.
-		* `S`: accept alphanumeric.
-	* `validator` (Function, default returns true): the function use to validate value. Must return true if valid or false if invalid.
-		* The function receives 2 parameters:
-			* `value`: current value.
-			* `settings`: current settings
-	* `getRawValue` (Function, default returns the current value): the function that's invoked when `getRawValue` method from component is called.
-		* The function receives 2 parameters:
-			* `value`: current value.
-			* `settings`: current settings
 
-For `type={'credit-card'}` <br />
+```jsx
+{
+	/**
+	 * mask: (String | required | default '')
+	 * the mask pattern
+	 * 9 - accept digit.
+	 * A - accept alpha.
+	 * S - accept alphanumeric.
+	 * * - accept all.
+	*/
+	mask: '999#AAA',
+
+	/**
+	 * validator: (Function | optional | defaults returns true)
+	 * use this funcion to inform if the inputed value is a valid value (for invalid phone numbers, for example). The isValid method use this validator.
+	*/
+	validator: function(value, settings) {
+		return true
+	},
+	/**
+	 * getRawValue: (Function | optional | defaults return current masked value)
+	 * use this function to parse and return values to use what you want.
+	 * for example, if you want to create a phone number mask (999) 999-99-99 but want to get only
+	 * the numbers for value, use this method for this parse step.
+	*/
+	getRawValue: function(value, settings) {
+		return 'my converted value';
+	},
+	/**
+	 * translation: (Object | optional | defaults 9, A, S, *)
+	 * the dictionary that translate mask and value.
+	 * you can change defaults by simple override the key (9, A, S, *) or create some new.
+	*/
+	translation: {
+		// this is a custom translation. The others (9, A, S, *) still works.
+		// this translation will be merged and turns into 9, A, S, *, #.
+		'#': function(val) {
+			if (val === ' ') {
+				return val;
+			}
+
+			// if returns null, undefined or '' (empty string), the value will be ignored.
+			return null;
+		},
+		// in this case, we will override build-in * translation (allow all characters)
+		// and set this to allow only blank spaces and some special characters.
+		'*': function(val) {
+			return [' ', '#', ',', '.', '!'].indexOf(val) >= 0 ? val : null;
+		}
+	}
+}
+
+```
+
+**For `type={'credit-card'}`** <br />
 * *options={...}*
 	* `obfuscated` (Boolean, default false): if the mask must be `9999 **** **** 9999`
 
@@ -302,6 +349,9 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.5.0
+* Adding new and powerfull `custom` engine mask \m/.
+
 ## 1.4.0
 * Adding `customTextInput` to allow other inputs instead native TextInput. (thank to [Hellon Canella](https://github.com/helloncanella))
 
