@@ -349,6 +349,10 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+
+## 1.5.1
+* Adding `tinymask` to fix some custom mask issues.
+
 ## 1.5.0
 * Adding new and powerfull `custom` engine mask \m/.
 
