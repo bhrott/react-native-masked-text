@@ -350,6 +350,9 @@ var money = MaskService.toMask('money', '123', {
 
 # Changelog
 
+## 1.5.2
+* Adding `keyboardType` to custom mask. (thanks to [Nurbek Abulgazin](https://github.com/nurbek-ab))
+
 ## 1.5.1
 * Adding `tinymask` to fix some custom mask issues.
 
@@ -357,7 +360,7 @@ var money = MaskService.toMask('money', '123', {
 * Adding new and powerfull `custom` engine mask \m/.
 
 ## 1.4.0
-* Adding `customTextInput` to allow other inputs instead native TextInput. (thank to [Hellon Canella](https://github.com/helloncanella))
+* Adding `customTextInput` to allow other inputs instead native TextInput. (thanks to [Hellon Canella](https://github.com/helloncanella))
 
 ## 1.3.4
 * Remove default value from mask to allow placeholder on text-input (thanks to [Cuong Hoang](https://github.com/cuonghv91)).
