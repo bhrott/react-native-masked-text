@@ -350,6 +350,10 @@ var money = MaskService.toMask('money', '123', {
 
 # Changelog
 
+## 1.5.3
+* Fix suffix backspace (thanks to [Thomas Kekeisen](https://github.com/blaues0cke))
+* Fix last character on custom mask (thanks to [Daniel Maly](https://github.com/DanielMaly))
+
 ## 1.5.2
 * Adding `keyboardType` to custom mask. (thanks to [Nurbek Abulgazin](https://github.com/nurbek-ab))
 
