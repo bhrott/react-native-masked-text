@@ -120,6 +120,61 @@ const Textfield = MKTextField.textfield()
 	placeholder="Enter text to see events" />
 ```
 
+#### customTextInputProps
+
+Some custom inputs like [react-native-textinput-effects](https://github.com/halilb/react-native-textinput-effects) have to set properties in mount time. For these types of components we use this property.
+
+```jsx
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+
+import { TextInputMask } from 'react-native-masked-text';
+import { Kaede } from 'react-native-textinput-effects';
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      birthday: ''
+    }
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <TextInputMask
+          ref={'myDateText'}
+          // here we set the custom component and their props.
+          customTextInput={Kaede}
+          customTextInputProps={{
+            style:{ width: '80%' },
+            label:'Birthday'
+          }}
+
+          type={'datetime'}
+          options={{
+            format: 'DD-MM-YYYY HH:mm:ss'
+          }}
+
+          // don't forget: the value and state!
+          onChangeText={birthday => this.setState({ birthday })}
+          value={this.state.birthday} />
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+});
+```
+
 #### TextInput Props
 
 You can use the native props of TextInput, with this in mind:
@@ -349,6 +404,8 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.6.0
+* Add compatibility to [react-native-textinput-effects](https://github.com/halilb/react-native-textinput-effects) by using `customTextInputProps` (thanks to [Pablo](https://github.com/rochapablo))
 
 ## 1.5.3
 * Fix suffix backspace (thanks to [Thomas Kekeisen](https://github.com/blaues0cke))
