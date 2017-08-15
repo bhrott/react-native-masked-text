@@ -404,6 +404,9 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.6.1
+* Fixing duplicated custom text input component. (thanks to [Pablo](https://github.com/rochapablo))
+
 ## 1.6.0
 * Add compatibility to [react-native-textinput-effects](https://github.com/halilb/react-native-textinput-effects) by using `customTextInputProps` (thanks to [Pablo](https://github.com/rochapablo))
 
