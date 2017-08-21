@@ -173,6 +173,20 @@ test('1 zeroCents results R$1,00 and raw value 1', () => {
     expect(receivedRawValue).toBe(expectedRawValue);
 });
 
+test('1 scaleRaw false results R$0,01 and raw value 1', () => {
+    var mask = new MoneyMask();
+    var expected = 'R$0,01';
+    var received = mask.getValue('1');
+
+    var expectedRawValue = 1;
+    var receivedRawValue = mask.getRawValue(received, {
+        scaleRaw: false
+    });
+
+    expect(received).toBe(expected);
+    expect(receivedRawValue).toBe(expectedRawValue);
+});
+
 test('111111 delimiter , results R$1,111,11 and raw value 1111.11', () => {
     var mask = new MoneyMask();
     var expected = 'R$1,111,11';
