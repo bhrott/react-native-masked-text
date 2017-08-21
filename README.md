@@ -226,6 +226,7 @@ Some types accept options, use it like this: `<TextInputMask type={'money'} opti
 	* `unit`: (String, default 'R$'): the prefix text.
 	* `suffixUnit` (String, default ''): the suffix text.
 	* `zeroCents` (Boolean, default false): if must show cents.
+	* `scaleRaw` (Boolean, default true): if getRawValue returns scaled (1.23) or un-scaled (123) Number.
 
 **For `type={'cel-phone'}`** <br />
 * *options={...}*
@@ -404,6 +405,10 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+
+## 1.6.2
+* Add `scaleRaw` option to money mask. (thanks to [Cogwheel](https://github.com/cogwheel))
+
 ## 1.6.1
 * Fixing duplicated custom text input component. (thanks to [Pablo](https://github.com/rochapablo))
 
