@@ -255,7 +255,7 @@ Some types accept options, use it like this: `<TextInputMask type={'money'} opti
 	 * 9 - accept digit.
 	 * A - accept alpha.
 	 * S - accept alphanumeric.
-	 * * - accept all.
+	 * * - accept all, EXCEPT white space.
 	*/
 	mask: '999#AAA',
 
@@ -404,6 +404,10 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.6.2
+* Fixing custom mask when removing value in middle of the text. (thanks to [Aleksandr Kompaniets](https://github.com/Oxyaction))
+	* KNOW ISSUE: the custom mask is not allowing white spaces temporarily.
+
 ## 1.6.1
 * Fixing duplicated custom text input component. (thanks to [Pablo](https://github.com/rochapablo))
 
