@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/benhurott/react-native-masked-text.git"
+    "url": "git+https://github.com/bumped-inc/react-native-masked-text.git"
   },
   "keywords": [
     "mask",
@@ -19,15 +19,33 @@
   "author": "Ben-hur Santos Ott",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/benhurott/react-native-masked-text/issues"
+    "url": "https://github.com/bumped-inc/react-native-masked-text/issues"
   },
-  "homepage": "https://github.com/benhurott/react-native-masked-text#readme",
+  "homepage": "https://github.com/bumped-inc/react-native-masked-text#readme",
   "dependencies": {
+    "babel-eslint": "^7.2.3",
     "moment": "^2.18.1",
     "tinymask": "^1.0.2"
   },
   "devDependencies": {
     "babel-preset-react-native": "^1.9.1",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-eslint-comments": "^1.0.2",
+    "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-flowtype": "^2.35.0",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^20.0.3",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-prefer-object-spread": "^1.2.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-react-intl": "^1.0.2",
+    "eslint-plugin-react-native": "^3.0.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-unicorn": "^2.1.2",
     "jest": "^19.0.2"
   }
 }
