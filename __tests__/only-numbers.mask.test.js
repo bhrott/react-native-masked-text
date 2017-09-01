@@ -1,44 +1,44 @@
 import { OnlyNumbersMask } from '../lib/masks';
 
 test('getType results only-numbers', () => {
-    var expected = 'only-numbers';
-    var received = OnlyNumbersMask.getType();
+  const expected = 'only-numbers';
+  const received = OnlyNumbersMask.getType();
 
-    expect(received).toBe(expected);
+  expect(received).toBe(expected);
 });
 
 test('abc123 results 123', () => {
-    var mask = new OnlyNumbersMask();
-    var expected = '123';
-    var received = mask.getValue('abc123');
+  const mask = new OnlyNumbersMask();
+  const expected = '123';
+  const received = mask.getValue('abc123');
 
-    expect(received).toBe(expected);
+  expect(received).toBe(expected);
 });
 
 test('1 results 1', () => {
-    var mask = new OnlyNumbersMask();
-    var expected = '1';
-    var received = mask.getValue('1');
+  const mask = new OnlyNumbersMask();
+  const expected = '1';
+  const received = mask.getValue('1');
 
-    expect(received).toBe(expected);
+  expect(received).toBe(expected);
 });
 
 test('abc results ', () => {
-    var mask = new OnlyNumbersMask();
-    var expected = '';
-    var received = mask.getValue('abc');
+  const mask = new OnlyNumbersMask();
+  const expected = '';
+  const received = mask.getValue('abc');
 
-    expect(received).toBe(expected);
+  expect(received).toBe(expected);
 });
 
 test('1 results 1 and raw value 1', () => {
-    var mask = new OnlyNumbersMask();
-    var expected = '1';
-    var received = mask.getValue('1');
+  const mask = new OnlyNumbersMask();
+  const expected = '1';
+  const received = mask.getValue('1');
 
-    var expectedRawValue = '1';
-    var receivedRawValue = mask.getRawValue(received);
+  const expectedRawValue = '1';
+  const receivedRawValue = mask.getRawValue(received);
 
-    expect(received).toBe(expected);
-    expect(receivedRawValue).toBe(expectedRawValue);
+  expect(received).toBe(expected);
+  expect(receivedRawValue).toBe(expectedRawValue);
 });
