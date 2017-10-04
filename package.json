@@ -2,6 +2,12 @@
   "name": "react-native-masked-text",
   "version": "1.6.2",
   "description": "Text and TextInput with mask for React Native applications",
+  "licenses": [
+    { 
+      "type": "MIT", 
+      "url": "https://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
   "main": "index.js",
   "scripts": {
     "test": "jest"
