@@ -405,9 +405,13 @@ Ex 2:
 import { DatetimeMask } from 'react-native-masked-text/lib/masks'
 export default class HMask {
   static raw(value) {
+    const format = 'YYYY-MM-DD'
     const mask = new DatetimeMask()
+    if (MaskService.isValid('datetime', value, { format: format })) {
+      return value
+    }
     const moment = mask.getRawValue(value, { format: 'DD/MM/YYYY' })
-    return moment.format('YYYY-MM-DD')
+    return moment.format(format)
   }
 }
 
