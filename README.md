@@ -403,6 +403,7 @@ Ex 2:
 
 ``` ts
 import { DatetimeMask } from 'react-native-masked-text/lib/masks'
+import { MaskService } from 'react-native-masked-text'
 export default class HMask {
   static raw(value) {
     const format = 'YYYY-MM-DD'
