@@ -28,18 +28,18 @@ export default class MyComponent extends Component {
 		// isValid method returns if the inputed value is valid.
 		// Ex: if you input 40/02/1990 30:20:20, it will return false
 		//	   because in this case, the day and the hour is invalid.
-		let valid = this.refs['myDateText'].isValid();
+		let valid = this.myDateText.isValid();
 
 		// get converted value. Using type=datetime, it returns the moment object.
 		// If it's using type=money, it returns a Number object.
-		let rawValue = this.refs['myDateText'].getRawValue();
+		let rawValue = this.myDateText.getRawValue();
 	}
 
 	render() {
 		// the type is required but options is required only for some specific types.
 		return (
 			<TextInputMask
-				ref={'myDateText'}
+				refInput={(ref) => this.myDateText = ref;}
 				type={'datetime'}
 				options={{
 					format: 'DD-MM-YYYY HH:mm:ss'
@@ -113,7 +113,7 @@ const Textfield = MKTextField.textfield()
 
 
 <TextInputMask
-	ref={'myDateText'}
+	refInput={(ref) => this.myDateText = ref;}
 	type={'money'}
 	style={styles.input}
 	customTextInput={Textfield}
@@ -144,7 +144,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <TextInputMask
-          ref={'myDateText'}
+          refInput={(ref) => this.myDateText = ref;}
           // here we set the custom component and their props.
           customTextInput={Kaede}
           customTextInputProps={{
