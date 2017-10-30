@@ -3,14 +3,17 @@
   "version": "1.6.2",
   "description": "Text and TextInput with mask for React Native applications",
   "licenses": [
-    { 
-      "type": "MIT", 
+    {
+      "type": "MIT",
       "url": "https://www.opensource.org/licenses/mit-license.php"
     }
   ],
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "jest"
+    "clean": "rimraf dist",
+    "test": "jest",
+    "build": "babel ./index.js ./lib/*.js ./lib/**/*.js -d ./dist",
+    "prepublish": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
@@ -33,7 +36,9 @@
     "tinymask": "^1.0.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-preset-react-native": "^1.9.1",
-    "jest": "^19.0.2"
+    "jest": "^19.0.2",
+    "rimraf": "^2.6.2"
   }
 }
