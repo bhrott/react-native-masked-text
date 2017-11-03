@@ -404,6 +404,10 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.6.3
+* Fixing moment version (thanks to [Edward Coleridge Smith](https://github.com/edcs))
+* Adding pre-builded lib to improve build phase (thanks to [Giorgi Bagdavadze](https://github.com/notgiorgi))
+
 ## 1.6.2
 * Fixing custom mask when removing value in middle of the text. (thanks to [Aleksandr Kompaniets](https://github.com/Oxyaction))
 	* KNOW ISSUE: the custom mask is not allowing user to input white spaces for `*` translation temporarily.
