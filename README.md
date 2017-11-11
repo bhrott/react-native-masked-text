@@ -404,6 +404,9 @@ var money = MaskService.toMask('money', '123', {
 
 
 # Changelog
+## 1.6.4
+* Fixing wrong format when use money mask and values with only one decimal place (`1.9`) (thanks to [Pablo](https://github.com/rochapablo)).
+
 ## 1.6.3
 * Fixing moment version (thanks to [Edward Coleridge Smith](https://github.com/edcs))
 * Adding pre-builded lib to improve build phase (thanks to [Giorgi Bagdavadze](https://github.com/notgiorgi))
