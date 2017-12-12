@@ -9,7 +9,7 @@ var dig2=new Number();
 var i=0;
 
 var exp=/\.|\-|\//g;
-cnpj=cnpj.toString().replace(exp,"");
+cnpj=cnpj.toString().replace(exp,'');
 var digito=new Number(eval(cnpj.charAt(12)+cnpj.charAt(13)));
 
 for(i=0;i<valida.length;i++){
@@ -36,5 +36,6 @@ return _get(CnpjMask.prototype.__proto__||Object.getPrototypeOf(CnpjMask.prototy
 }},{key:'validate',value:function validate(
 
 value,settings){
-return validateCnpj(value);
+var isEmpty=(value||'').trim().length===0;
+return!isEmpty&&validateCnpj(value);
 }}],[{key:'getType',value:function getType(){return'cnpj';}}]);return CnpjMask;}(_base2.default);exports.default=CnpjMask;

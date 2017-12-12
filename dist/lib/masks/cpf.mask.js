@@ -3,11 +3,11 @@ Object.defineProperty(exports,"__esModule",{value:true});var _createClass=functi
 var CPF_MASK='999.999.999-99';
 
 var validateCPF=function validateCPF(cpf){
-if(cpf==""){
+if(cpf==''){
 return true;
 }
 
-cpf=cpf.replace(/\./gi,"").replace(/-/gi,"");
+cpf=cpf.replace(/\./gi,'').replace(/-/gi,'');
 var isValid=true;
 var sum;
 var rest;
@@ -15,7 +15,19 @@ var i;
 i=0;
 sum=0;
 
-if(cpf.length!=11||cpf=="00000000000"||cpf=="11111111111"||cpf=="22222222222"||cpf=="33333333333"||cpf=="44444444444"||cpf=="55555555555"||cpf=="66666666666"||cpf=="77777777777"||cpf=="88888888888"||cpf=="99999999999"){
+if(
+cpf.length!=11||
+cpf=='00000000000'||
+cpf=='11111111111'||
+cpf=='22222222222'||
+cpf=='33333333333'||
+cpf=='44444444444'||
+cpf=='55555555555'||
+cpf=='66666666666'||
+cpf=='77777777777'||
+cpf=='88888888888'||
+cpf=='99999999999')
+{
 isValid=false;
 }
 
@@ -65,5 +77,6 @@ return _get(CpfMask.prototype.__proto__||Object.getPrototypeOf(CpfMask.prototype
 }},{key:'validate',value:function validate(
 
 value,settings){
-return validateCPF(value);
+var isEmpty=(value||'').trim().length===0;
+return!isEmpty&&validateCPF(value);
 }}],[{key:'getType',value:function getType(){return'cpf';}}]);return CpfMask;}(_base2.default);exports.default=CpfMask;

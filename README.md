@@ -111,7 +111,6 @@ const Textfield = MKTextField.textfield()
 	.withPlaceholder('Text...')
 	.withStyle(styles.textfield)
 	.build()
-
 ;<TextInputMask
 	ref={'myDateText'}
 	type={'money'}
@@ -393,7 +392,7 @@ var money = MaskService.toMask('money', '123', {
 
 ## 1.6.5
 
-* Fixing validation for CPF and CNPJ when empty string is inputed.
+* Fixing validation for CPF and CNPJ when empty string is inputed. (thanks to [gabuael](https://github.com/gabuael))
 
 ## 1.6.4
 
