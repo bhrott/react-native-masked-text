@@ -17,17 +17,16 @@ MoneyMask=function(_BaseMask){_inherits(MoneyMask,_BaseMask);function MoneyMask(
 value,settings,oldValue){
 var mergedSettings=_get(MoneyMask.prototype.__proto__||Object.getPrototypeOf(MoneyMask.prototype),'mergeSettings',this).call(this,MONEY_MASK_SETTINGS,settings);
 
-if(mergedSettings.suffixUnit&&oldValue&&value){
+var sanitized=this._sanitize(value,mergedSettings);
 
-
-
-if(value.length==oldValue.length-1){
-var cleared=this.removeNotNumbers(value);
-value=cleared.substr(0,cleared.length-1);
+if(mergedSettings.suffixUnit&&oldValue&&sanitized){
+if(sanitized.length==oldValue.length-1){
+var cleared=this.removeNotNumbers(sanitized);
+sanitized=cleared.substr(0,cleared.length-1);
 }
 }
 
-var masked=this.getVMasker().toMoney(value,mergedSettings);
+var masked=this.getVMasker().toMoney(sanitized,mergedSettings);
 
 return masked;
 }},{key:'getRawValue',value:function getRawValue(
@@ -44,13 +43,24 @@ return Number(normalized);
 
 value,settings){
 return true;
+}},{key:'_sanitize',value:function _sanitize(
+
+value,settings){
+if(typeof value==='number'){
+return value.toFixed(settings.precision);
+}
+
+return value;
 }},{key:'_insert',value:function _insert(
 
 text,index,string){
 if(index>0){
-return text.substring(0,index)+string+text.substring(index,text.length);
-}else
-{
+return(
+text.substring(0,index)+
+string+
+text.substring(index,text.length));
+
+}else{
 return string+text;
 }
 }}],[{key:'getType',value:function getType(){return'money';}}]);return MoneyMask;}(_base2.default);exports.default=MoneyMask;

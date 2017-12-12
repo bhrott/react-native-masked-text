@@ -1,39 +1,39 @@
 {
-    "name": "react-native-masked-text",
-    "version": "1.6.4",
-    "description": "Text and TextInput with mask for React Native applications",
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "https://www.opensource.org/licenses/mit-license.php"
-        }
-    ],
-    "main": "./dist/index.js",
-    "scripts": {
-        "clean": "rimraf dist",
-        "test": "jest",
-        "build": "babel ./index.js ./lib/*.js ./lib/**/*.js -d ./dist",
-        "prepublish": "npm run clean && npm run build"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/benhurott/react-native-masked-text.git"
-    },
-    "keywords": ["mask", "text", "textinput", "react-native"],
-    "author": "Ben-hur Santos Ott",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/benhurott/react-native-masked-text/issues"
-    },
-    "homepage": "https://github.com/benhurott/react-native-masked-text#readme",
-    "dependencies": {
-        "moment": "^2.19.1",
-        "tinymask": "^1.0.2"
-    },
-    "devDependencies": {
-        "babel-cli": "^6.26.0",
-        "babel-preset-react-native": "^1.9.1",
-        "jest": "^19.0.2",
-        "rimraf": "^2.6.2"
-    }
+	"name": "react-native-masked-text",
+	"version": "1.6.5",
+	"description": "Text and TextInput with mask for React Native applications",
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://www.opensource.org/licenses/mit-license.php"
+		}
+	],
+	"main": "./dist/index.js",
+	"scripts": {
+		"clean": "rimraf dist",
+		"test": "jest",
+		"build": "babel ./index.js ./lib/*.js ./lib/**/*.js -d ./dist",
+		"prepublish": "npm run clean && npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/benhurott/react-native-masked-text.git"
+	},
+	"keywords": ["mask", "text", "textinput", "react-native"],
+	"author": "Ben-hur Santos Ott",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/benhurott/react-native-masked-text/issues"
+	},
+	"homepage": "https://github.com/benhurott/react-native-masked-text#readme",
+	"dependencies": {
+		"moment": "^2.19.1",
+		"tinymask": "^1.0.2"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-preset-react-native": "^1.9.1",
+		"jest": "^19.0.2",
+		"rimraf": "^2.6.2"
+	}
 }
