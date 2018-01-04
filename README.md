@@ -1,5 +1,7 @@
 # react-native-masked-text
 
+[![Help Contribute to Open Source](https://www.codetriage.com/benhurott/react-native-masked-text/badges/users.svg)](https://www.codetriage.com/benhurott/react-native-masked-text)
+
 This is a simple masked text (normal text and input text) component for React-Native.
 
 Thanks to [vanilla-masker](https://github.com/BankFacil/vanilla-masker) =).
