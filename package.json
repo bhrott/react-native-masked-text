@@ -19,7 +19,12 @@
 		"type": "git",
 		"url": "git+https://github.com/benhurott/react-native-masked-text.git"
 	},
-	"keywords": ["mask", "text", "textinput", "react-native"],
+	"keywords": [
+		"mask",
+		"text",
+		"textinput",
+		"react-native"
+	],
 	"author": "Ben-hur Santos Ott",
 	"license": "ISC",
 	"bugs": {
