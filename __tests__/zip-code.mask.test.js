@@ -52,3 +52,11 @@ test('11111111 results 11111-111 and raw value 11111111', () => {
     expect(received).toBe(expected);
     expect(receivedRawValue).toBe(expectedRawValue);
 });
+
+test('empty string is not valid', () => {
+    var mask = new ZipCodeMask();
+    var received = mask.getValue('');
+    var isValid = mask.validate(received);
+
+    expect(isValid).toBe(false)
+});
