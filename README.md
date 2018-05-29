@@ -368,6 +368,9 @@ If you want, we expose the `MaskService`. You can use it:
 * static toMask(type, value, settings): mask a value.
   _ `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)
   _ `value` (String, required): the value to be masked \* `settings` (Object, optional): if the mask type accepts options, pass it in the settings parameter
+* static toRawValue(type, maskedValue, settings): get the raw value of a masked value.
+  _ `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)
+  _ `maskedValue` (String, required): the masked value to be converted in raw value \* `settings` (Object, optional): if the mask type accepts options, pass it in the settings parameter
 * static isValid(type, value, settings): validate if the mask and the value match.
   _ `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)
   _ `value` (String, required): the value to be masked \* `settings` (Object, optional): if the mask type accepts options, pass it in the settings parameter
