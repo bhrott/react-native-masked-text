@@ -392,6 +392,10 @@ var money = MaskService.toMask('money', '123', {
 
 # Changelog
 
+## 1.6.6
+
+* Adding `toRawValue` method to MaskService. (thanks to [fabioh8010](https://github.com/fabioh8010))
+
 ## 1.6.5
 
 * Fixing validation for CPF and CNPJ when empty string is inputed. (thanks to [gabuael](https://github.com/gabuael))
