@@ -392,6 +392,10 @@ var money = MaskService.toMask('money', '123', {
 
 # Changelog
 
+## 1.7.0
+
+* Adding `ts definitions`. (thanks to [iiandrade](https://github.com/iiandrade))
+
 ## 1.6.5
 
 * Fixing validation for CPF and CNPJ when empty string is inputed. (thanks to [gabuael](https://github.com/gabuael))
