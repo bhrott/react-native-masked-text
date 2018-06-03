@@ -1,0 +1,58 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended",
+  ],
+  "plugins": [
+    "flowtype"
+  ],
+  "parser": "babel-eslint",
+    "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "codeFrame": false
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "mocha": true,
+    "jest": true
+  },
+  "rules": {
+    "class-methods-use-this": [ 0, {
+      "exceptMethods": []
+    }],
+
+    "react/jsx-filename-extension": [ 1, {
+      "extensions": [".js", ".jsx"]
+    }],
+    "react/jsx-max-props-per-line": [ 1, {
+      "maximum": 2,
+      "when": "multiline"
+    }],
+    "react/prefer-stateless-function": [ 0, {} ],
+    "require-jsdoc": ["error", {
+        "require": {
+            "FunctionDeclaration": true,
+            "MethodDefinition": true,
+            "ClassDeclaration": true
+        }
+    }],
+    "react/sort-comp": [ 2, {
+      order: [
+        "type-annotations",
+        "static-methods",
+        "life-cycle",
+        "everything-else",
+        "render"
+      ]
+    }],
+    "valid-jsdoc": ["error", {
+      "requireReturn": true,
+      "requireReturnType": true,
+      "requireParamDescription": true,
+      "requireReturnDescription": true
+    }]
+  }
+}

@@ -32,18 +32,18 @@ export default class MyComponent extends Component {
 		// isValid method returns if the inputed value is valid.
 		// Ex: if you input 40/02/1990 30:20:20, it will return false
 		//	   because in this case, the day and the hour is invalid.
-		let valid = this.refs['myDateText'].isValid()
+		let valid = this.myDateText.isValid();
 
 		// get converted value. Using type=datetime, it returns the moment object.
 		// If it's using type=money, it returns a Number object.
-		let rawValue = this.refs['myDateText'].getRawValue()
+		let rawValue = this.myDateText.getRawValue();
 	}
 
 	render() {
 		// the type is required but options is required only for some specific types.
 		return (
 			<TextInputMask
-				ref={'myDateText'}
+				refInput={(ref) => this.myDateText = ref;}
 				type={'datetime'}
 				options={{
 					format: 'DD-MM-YYYY HH:mm:ss'
@@ -110,11 +110,13 @@ You can use this prop if you want custom text input instead native TextInput com
 
 ```jsx
 const Textfield = MKTextField.textfield()
-	.withPlaceholder('Text...')
-	.withStyle(styles.textfield)
-	.build()
-;<TextInputMask
-	ref={'myDateText'}
+  .withPlaceholder('Text...')
+  .withStyle(styles.textfield)
+  .build();
+
+
+<TextInputMask
+	refInput={(ref) => this.myDateText = ref;}
 	type={'money'}
 	style={styles.input}
 	customTextInput={Textfield}
@@ -134,36 +136,37 @@ import { TextInputMask } from 'react-native-masked-text'
 import { Kaede } from 'react-native-textinput-effects'
 
 export default class App extends React.Component {
-	constructor(props) {
-		super(props)
+  constructor(props) {
+    super(props)
 
-		this.state = {
-			birthday: ''
-		}
-	}
+    this.state = {
+      birthday: ''
+    }
+  }
 
-	render() {
-		return (
-			<View style={styles.container}>
-				<TextInputMask
-					ref={'myDateText'}
-					// here we set the custom component and their props.
-					customTextInput={Kaede}
-					customTextInputProps={{
-						style: { width: '80%' },
-						label: 'Birthday'
-					}}
-					type={'datetime'}
-					options={{
-						format: 'DD-MM-YYYY HH:mm:ss'
-					}}
-					// don't forget: the value and state!
-					onChangeText={birthday => this.setState({ birthday })}
-					value={this.state.birthday}
-				/>
-			</View>
-		)
-	}
+  render() {
+    return (
+      <View style={styles.container}>
+        <TextInputMask
+          refInput={(ref) => this.myDateText = ref;}
+          // here we set the custom component and their props.
+          customTextInput={Kaede}
+          customTextInputProps={{
+            style:{ width: '80%' },
+            label:'Birthday'
+          }}
+
+          type={'datetime'}
+          options={{
+            format: 'DD-MM-YYYY HH:mm:ss'
+          }}
+
+          // don't forget: the value and state!
+          onChangeText={birthday => this.setState({ birthday })}
+          value={this.state.birthday} />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -400,6 +403,7 @@ var money = MaskService.toMask('money', '123', {
 
 * Adding `ts definitions`. (thanks to [iiandrade](https://github.com/iiandrade))
 * Adding `toRawValue` method to MaskService. (thanks to [fabioh8010](https://github.com/fabioh8010))
+* Replace old legacy ref string by the new callback. (thanks to [Yamilquery](https://github.com/Yamilquery))
 
 ## 1.6.5
 
