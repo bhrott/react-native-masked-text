@@ -368,6 +368,9 @@ If you want, we expose the `MaskService`. You can use it:
 * static toMask(type, value, settings): mask a value.
   _ `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)
   _ `value` (String, required): the value to be masked \* `settings` (Object, optional): if the mask type accepts options, pass it in the settings parameter
+* static toRawValue(type, maskedValue, settings): get the raw value of a masked value.
+  _ `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)
+  _ `maskedValue` (String, required): the masked value to be converted in raw value \* `settings` (Object, optional): if the mask type accepts options, pass it in the settings parameter
 * static isValid(type, value, settings): validate if the mask and the value match.
   _ `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)
   _ `value` (String, required): the value to be masked \* `settings` (Object, optional): if the mask type accepts options, pass it in the settings parameter
@@ -390,11 +393,13 @@ var money = MaskService.toMask('money', '123', {
 
 * If the `es2015` error throw by babel, try run `react-native start --reset-cache`
 
+
 # Changelog
 
 ## 1.7.0
 
 * Adding `ts definitions`. (thanks to [iiandrade](https://github.com/iiandrade))
+* Adding `toRawValue` method to MaskService. (thanks to [fabioh8010](https://github.com/fabioh8010))
 
 ## 1.6.5
 

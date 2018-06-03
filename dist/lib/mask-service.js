@@ -3,6 +3,10 @@ Object.defineProperty(exports,"__esModule",{value:true});var _createClass=functi
 MaskService=function(){function MaskService(){_classCallCheck(this,MaskService);}_createClass(MaskService,null,[{key:'toMask',value:function toMask(
 type,value,settings){
 return _maskResolver2.default.resolve(type).getValue(value,settings);
+}},{key:'toRawValue',value:function toRawValue(
+
+type,maskedValue,settings){
+return _maskResolver2.default.resolve(type).getRawValue(maskedValue,settings);
 }},{key:'isValid',value:function isValid(
 
 type,value,settings){
