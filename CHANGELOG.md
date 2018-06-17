@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.2
+
+* Fixing [ISSUE#79](https://github.com/benhurott/react-native-masked-text/issues/79). (thanks to [herlan-evocorp](https://github.com/herlan-evocorp))
+
 ## 1.7.1
 
 * Updating moment lib.

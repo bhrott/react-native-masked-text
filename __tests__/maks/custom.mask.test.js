@@ -1,4 +1,4 @@
-import { CustomMask } from '../lib/masks';
+import { CustomMask } from '../../lib/masks';
 
 test('getType results custom', () => {
     var expected = 'custom';

@@ -1,4 +1,4 @@
-import { CelPhoneMask } from '../lib/masks';
+import { CelPhoneMask } from '../../lib/masks';
 
 test('getType results cel-phone', () => {
     var expected = 'cel-phone';

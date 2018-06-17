@@ -1,4 +1,4 @@
-import { CnpjMask } from '../lib/masks'
+import { CnpjMask } from '../../lib/masks'
 
 test('getType results cnpj', () => {
 	var expected = 'cnpj'

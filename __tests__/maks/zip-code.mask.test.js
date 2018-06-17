@@ -1,4 +1,4 @@
-import { ZipCodeMask } from '../lib/masks';
+import { ZipCodeMask } from '../../lib/masks';
 
 test('getType results zip-code', () => {
     var expected = 'zip-code';
