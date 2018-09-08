@@ -6,6 +6,7 @@
 
 -   [74 - Updated Typescript definition file](https://github.com/benhurott/react-native-masked-text/pull/74). (thanks to [iiandrade](https://github.com/iiandrade))
 -   [80 - TypeScript support for custom mask options](https://github.com/benhurott/react-native-masked-text/pull/80). (thanks to [enagorny](https://github.com/enagorny))
+-   [88 - Moved typings dependencies to devDependencies](https://github.com/benhurott/react-native-masked-text/pull/88). (thanks to [emiyake](https://github.com/emiyake))
 
 ## 1.7.2
 
