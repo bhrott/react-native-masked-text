@@ -1,5 +1,6 @@
 # react-native-masked-text
 
+![downloads](https://img.shields.io/npm/dt/react-native-masked-text.svg)
 [![Help Contribute to Open Source](https://www.codetriage.com/benhurott/react-native-masked-text/badges/users.svg)](https://www.codetriage.com/benhurott/react-native-masked-text)
 
 ![logo](docs/res/logo.png)

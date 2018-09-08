@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { TextInputMask } from './rnmt'
+import { TextInputMask } from 'react-native-masked-text'
 
 export default class App extends Component {
     state = {
@@ -45,9 +45,14 @@ export default class App extends Component {
                     style={styles.input}
                     type={'custom'}
                     options={{
-                        mask: '999|999'
+                        mask: '999$999',
+                        translation: {
+                            $: val => {
+                                return val === ' ' || val === '0' ? val : ''
+                            }
+                        }
                     }}
-                    placeholder={'custom 999|999'}
+                    placeholder={'custom 999$999'}
                     value={this.state.custom}
                     onChangeText={custom => {
                         this.setState({ custom })
@@ -63,6 +68,12 @@ export default class App extends Component {
                         this.setState({ money })
                         console.log(this.state)
                     }}
+                />
+                <TextInputMask
+                    style={styles.input}
+                    type="custom"
+                    options={{ mask: '999 (99) 999 99 99' }}
+                    placeholder={'custom 999 (99) 999 99 99'}
                 />
             </View>
         )
