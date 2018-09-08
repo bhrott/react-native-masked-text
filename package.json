@@ -33,11 +33,11 @@
 	"homepage": "https://github.com/benhurott/react-native-masked-text#readme",
 	"dependencies": {
 		"moment": "2.19.3",
-		"tinymask": "^1.0.2",
-		"@types/react-native": "*",
-		"@types/react": "*"
+		"tinymask": "^1.0.2"
 	},
 	"devDependencies": {
+		"@types/react-native": "*",
+		"@types/react": "*",
 		"babel-cli": "^6.26.0",
 		"babel-preset-react-native": "^1.9.1",
 		"jest": "^19.0.2",
