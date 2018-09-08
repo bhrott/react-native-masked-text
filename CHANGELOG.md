@@ -2,6 +2,11 @@
 
 ## [1.9.0] - 2018-09-08
 
+## Changed
+
+-   Custom Mask: now all the masks use the core from Custom Mask.
+-   Adding some docs about how to use methods.
+
 ### PRs
 
 -   [74 - Updated Typescript definition file](https://github.com/benhurott/react-native-masked-text/pull/74). (thanks to [iiandrade](https://github.com/iiandrade))
