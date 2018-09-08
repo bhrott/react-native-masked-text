@@ -2,3 +2,10 @@ node_modules/
 .vscode/
 .idea/
 npm-debug.log
+android/
+ios/
+App.js
+app.json
+index.js
+.watchmanconfig
+.buckconfig

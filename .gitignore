@@ -3,4 +3,4 @@ node_modules/
 .idea/
 npm-debug.log
 
-poc.js
+__tst.js

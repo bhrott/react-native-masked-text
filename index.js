@@ -1,7 +1,4 @@
-import MaskService from './lib/mask-service';
-import TextInputMask from './lib/text-input-mask';
-import TextMask from './lib/text-mask';
+import { AppRegistry } from 'react-native';
+import App from './App';
 
-module.exports.MaskService = MaskService;
-module.exports.TextInputMask = TextInputMask;
-module.exports.TextMask = TextMask;
+AppRegistry.registerComponent('RnTest', () => App);
