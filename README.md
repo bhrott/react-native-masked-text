@@ -2,10 +2,9 @@
 
 [![Help Contribute to Open Source](https://www.codetriage.com/benhurott/react-native-masked-text/badges/users.svg)](https://www.codetriage.com/benhurott/react-native-masked-text)
 
-This is a simple masked text (normal text and input text) component for React-Native.
+![logo](docs/res/logo.png)
 
-Thanks to [vanilla-masker](https://github.com/BankFacil/vanilla-masker) =).
-Thanks to [moment](http://momentjs.com/) =).
+This is a simple masked text (normal text and input text) component for React-Native.
 
 ## Supported Versions
 
@@ -476,3 +475,10 @@ var money = MaskService.toMask('money', '123', {
 ## Changelog
 
 View changelog [HERE](CHANGELOG.md)
+
+## Thanks to
+
+-   <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+-   Thanks to [vanilla-masker](https://github.com/BankFacil/vanilla-masker) =).
+-   Thanks to [moment](http://momentjs.com/) =).
