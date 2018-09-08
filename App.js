@@ -25,6 +25,8 @@ export default class App extends Component {
                         format: 'DD-MM-YYYY HH:mm:ss'
                     }}
                     placeholder={'datetime DD-MM-YYYY HH:mm:ss'}
+                    value={this.state.datetime}
+                    onChangeText={datetime => this.setState({ datetime })}
                 />
                 <TextInputMask
                     style={styles.input}
