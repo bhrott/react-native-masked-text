@@ -13,7 +13,8 @@
         "clean": "rimraf dist",
         "test": "jest",
         "build": "babel ./rnmt.js ./lib/*.js ./lib/**/*.js -d ./dist",
-        "prepublish": "npm test && npm run clean && npm run build"
+        "prepublish": "npm test && npm run clean && npm run build",
+        "start": "node node_modules/react-native/local-cli/cli.js start"
     },
     "repository": {
         "type": "git",

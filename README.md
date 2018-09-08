@@ -183,9 +183,9 @@ const styles = StyleSheet.create({
 
 You can use the native props of TextInput, with this in mind:
 
-* onChangeText is intercepted by component.
-* value is intercepted by component.
-* if you pass keyboardType, it will override the keyboardType of masked component.
+-   onChangeText is intercepted by component.
+-   value is intercepted by component.
+-   if you pass keyboardType, it will override the keyboardType of masked component.
 
 #### TextInput Methods
 
@@ -193,31 +193,31 @@ If you want to use the methods of the native TextInput, use the `getElement()` m
 
 ```jsx
 export default class App extends React.Component {
-	onGoFocus() {
-		// when you call getElement method, the instance of native TextInput will returned.
-		this.refs['myText'].getElement().focus()
-	}
+    onGoFocus() {
+        // when you call getElement method, the instance of native TextInput will returned.
+        this.refs['myText'].getElement().focus()
+    }
 
-	render() {
-		return (
-			<View style={styles.container}>
-				<View>
-					<TextInputMask
-						ref="myText"
-						type={'only-numbers'}
-						style={styles.input}
-					/>
-				</View>
-				<View>
-					<Button
-						onPress={this.onGoFocus.bind(this)}
-						title="Go Focus Hue"
-						color="#841584"
-					/>
-				</View>
-			</View>
-		)
-	}
+    render() {
+        return (
+            <View style={styles.container}>
+                <View>
+                    <TextInputMask
+                        ref="myText"
+                        type={'only-numbers'}
+                        style={styles.input}
+                    />
+                </View>
+                <View>
+                    <Button
+                        onPress={this.onGoFocus.bind(this)}
+                        title="Go Focus Hue"
+                        color="#841584"
+                    />
+                </View>
+            </View>
+        )
+    }
 }
 ```
 
@@ -227,35 +227,35 @@ Some types accept options, use it like this: `<TextInputMask type={'money'} opti
 
 **For `type={'money'}`** <br />
 
-* _options={...}_
-  _ `precision` (Number, default 2): the decimal places.
-  _ `separator` (String, default ','): the decimal separator.
-  _ `delimiter` (String, default '.'): the thousand separator.
-  _ `unit`: (String, default 'R$'): the prefix text.
-  _ `suffixUnit` (String, default ''): the suffix text.
-  _ `zeroCents` (Boolean, default false): if must show cents.
+-   _options={...}_
+    _ `precision` (Number, default 2): the decimal places.
+    _ `separator` (String, default ','): the decimal separator.
+    _ `delimiter` (String, default '.'): the thousand separator.
+    _ `unit`: (String, default 'R$'): the prefix text.
+    _ `suffixUnit` (String, default ''): the suffix text.
+    _ `zeroCents` (Boolean, default false): if must show cents.
 
 **For `type={'cel-phone'}`** <br />
 
-* _options={...}_
-  _ `withDDD` (Boolean, default true): if the ddd will be include in the mask.
-  _ `dddMask` (String, default '(99) '): the default mask applied if `withDDD` is true.
+-   _options={...}_
+    _ `withDDD` (Boolean, default true): if the ddd will be include in the mask.
+    _ `dddMask` (String, default '(99) '): the default mask applied if `withDDD` is true.
 
 **For `type={'datetime'}`** <br />
 
-* _options={...}_
-  _ `format` (String, default DD/MM/YYYY HH:mm:ss): moment date format. It accepts the following:
-  _ DD/MM/YYYY HH:mm:ss
-  _ DD/MM/YYYY
-  _ MM/DD/YYYY
-  _ YYYY/MM/DD
-  _ HH:mm:ss
-  _ HH:mm
-  _ HH \* _You can use all of dates with `-` instead of `/` if you want_
+-   _options={...}_
+    _ `format` (String, default DD/MM/YYYY HH:mm:ss): moment date format. It accepts the following:
+    _ DD/MM/YYYY HH:mm:ss
+    _ DD/MM/YYYY
+    _ MM/DD/YYYY
+    _ YYYY/MM/DD
+    _ HH:mm:ss
+    _ HH:mm
+    _ HH \* _You can use all of dates with `-` instead of `/` if you want_
 
 **For `type={'custom'}`** <br />
 
-* _options={...}_
+-   _options={...}_
 
 ```jsx
 {
@@ -312,13 +312,29 @@ Some types accept options, use it like this: `<TextInputMask type={'money'} opti
 
 **For `type={'credit-card'}`** <br />
 
-* _options={...}_ \* `obfuscated` (Boolean, default false): if the mask must be `9999 **** **** 9999`
+-   _options={...}_ \* `obfuscated` (Boolean, default false): if the mask must be `9999 **** **** 9999`
 
 ### Methods
 
-* `getElement()`: return the instance of _TextInput_ component.
-* `isValid()`: if the value inputed is valid for the mask. \* _credit-card_: return true if the mask is complete. \* _cpf_: return true if the mask is complete and cpf is valid. \* _cnpj_: return true if the mask is complete and cnpj is valid. \* _zip-code_: return true if the mask is complete. \* _only-numbers_: always returns true. \* _money_: always returns true. \* _cel-phone_: return true if the mask is complete. \* _datetime_: return true if the date value is valid for format. \* _custom_: use custom validation, if it not exist, always returns true.
-* `getRawValue()`: get the converted value of mask. \* _credit-card_: return the array with the value parts. Ex: `1234 1234 1234 1234` returns `[1234, 1234, 1234, 1234]`. \* _cpf_: return the value without mask. \* _cnpj_: return the value without mask. \* _zip-code_: return the value without mask. \* _only-numbers_: return the value without mask. \* _money_: return the Number value. Ex: `R$ 1.234,56` returns `1234.56`. \* _cel-phone_: return the value without mask. \* _datetime_: return the `moment` object for the date and format. \* _custom_: use custom method (passed in options). If it not exists, returns the current value.
+-   `getElement()`: return the instance of _TextInput_ component.
+-   `isValid()`: if the value inputed is valid for the mask.
+    _ *credit-card*: return true if the mask is complete.
+    _ _cpf_: return true if the mask is complete and cpf is valid.
+    _ *cnpj*: return true if the mask is complete and cnpj is valid.
+    _ _zip-code_: return true if the mask is complete.
+    _ *only-numbers*: always returns true.
+    _ _money_: always returns true.
+    _ *cel-phone*: return true if the mask is complete.
+    _ _datetime_: return true if the date value is valid for format. \* _custom_: use custom validation, if it not exist, always returns true.
+-   `getRawValue()`: get the converted value of mask.
+    _ *credit-card*: return the array with the value parts. Ex: `1234 1234 1234 1234` returns `[1234, 1234, 1234, 1234]`.
+    _ _cpf_: return the value without mask.
+    _ *cnpj*: return the value without mask.
+    _ _zip-code_: return the value without mask.
+    _ *only-numbers*: return the value without mask.
+    _ _money_: return the Number value. Ex: `R$ 1.234,56` returns `1234.56`.
+    _ *cel-phone*: return the value without mask.
+    _ _datetime_: return the `moment` object for the date and format. \* _custom_: use custom method (passed in options). If it not exists, returns the current value.
 
 ## Usage (TextMask)
 
@@ -329,26 +345,26 @@ import React, { Component } from 'react'
 import { TextMask } from 'react-native-masked-text'
 
 export default class MyComponent extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			text: '4567123409871234'
-		}
-	}
+    constructor(props) {
+        super(props)
+        this.state = {
+            text: '4567123409871234'
+        }
+    }
 
-	render() {
-		// the type is required but options is required only for some specific types.
-		// the sample below will output 4567 **** **** 1234
-		return (
-			<TextMask
-				value={this.state.text}
-				type={'credit-card'}
-				options={{
-					obfuscated: true
-				}}
-			/>
-		)
-	}
+    render() {
+        // the type is required but options is required only for some specific types.
+        // the sample below will output 4567 **** **** 1234
+        return (
+            <TextMask
+                value={this.state.text}
+                type={'credit-card'}
+                options={{
+                    obfuscated: true
+                }}
+            />
+        )
+    }
 }
 ```
 
@@ -368,15 +384,15 @@ If you want, we expose the `MaskService`. You can use it:
 
 **Methods**
 
-* static toMask(type, value, settings): mask a value.
-  _ `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)
-  _ `value` (String, required): the value to be masked \* `settings` (Object, optional): if the mask type accepts options, pass it in the settings parameter
-* static toRawValue(type, maskedValue, settings): get the raw value of a masked value.
-  _ `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)
-  _ `maskedValue` (String, required): the masked value to be converted in raw value \* `settings` (Object, optional): if the mask type accepts options, pass it in the settings parameter
-* static isValid(type, value, settings): validate if the mask and the value match.
-  _ `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)
-  _ `value` (String, required): the value to be masked \* `settings` (Object, optional): if the mask type accepts options, pass it in the settings parameter
+-   static toMask(type, value, settings): mask a value.
+    _ `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)
+    _ `value` (String, required): the value to be masked \* `settings` (Object, optional): if the mask type accepts options, pass it in the settings parameter
+-   static toRawValue(type, maskedValue, settings): get the raw value of a masked value.
+    _ `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)
+    _ `maskedValue` (String, required): the masked value to be converted in raw value \* `settings` (Object, optional): if the mask type accepts options, pass it in the settings parameter
+-   static isValid(type, value, settings): validate if the mask and the value match.
+    _ `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)
+    _ `value` (String, required): the value to be masked \* `settings` (Object, optional): if the mask type accepts options, pass it in the settings parameter
 
 Ex:
 
@@ -384,9 +400,9 @@ Ex:
 import { MaskService } from 'react-native-masked-text'
 
 var money = MaskService.toMask('money', '123', {
-	unit: 'US$',
-	separator: '.',
-	delimiter: ','
+    unit: 'US$',
+    separator: '.',
+    delimiter: ','
 })
 
 // money -> US$ 1.23
@@ -394,8 +410,8 @@ var money = MaskService.toMask('money', '123', {
 
 ## Throubleshooting
 
-* If the `es2015` error throw by babel, try run `react-native start --reset-cache`
-
+-   If the `es2015` error throw by babel, try run `react-native start --reset-cache`
 
 ## Changelog
+
 View changelog [HERE](CHANGELOG.md)
