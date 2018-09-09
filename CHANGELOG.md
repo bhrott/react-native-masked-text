@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.9.1] - 2018-09-09
+
+-   Fix [#92](https://github.com/benhurott/react-native-masked-text/issues/92): Unable to resolve module ./masks in v1.9.0 (thanks to [ahce](https://github.com/ahce) for reporting)
+
 ## [1.9.0] - 2018-09-08
 
 ## Changed
@@ -12,7 +16,6 @@
 -   [74 - Updated Typescript definition file](https://github.com/benhurott/react-native-masked-text/pull/74). (thanks to [iiandrade](https://github.com/iiandrade))
 -   [80 - TypeScript support for custom mask options](https://github.com/benhurott/react-native-masked-text/pull/80). (thanks to [enagorny](https://github.com/enagorny))
 -   [88 - Moved typings dependencies to devDependencies](https://github.com/benhurott/react-native-masked-text/pull/88). (thanks to [emiyake](https://github.com/emiyake))
--   [90 - add cpf-cnpj mask to auto-detect if the document is a CPF or CNPJ](https://github.com/benhurott/react-native-masked-text/pull/90). (thanks to [ronaldozanoni](https://github.com/ronaldozanoni))
 
 ## 1.7.2
 

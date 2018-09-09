@@ -20,60 +20,8 @@ export default class App extends Component {
             <View style={styles.container}>
                 <TextInputMask
                     style={styles.input}
-                    type={'datetime'}
-                    options={{
-                        format: 'DD-MM-YYYY HH:mm:ss'
-                    }}
-                    placeholder={'datetime DD-MM-YYYY HH:mm:ss'}
-                    value={this.state.datetime}
-                    onChangeText={datetime => this.setState({ datetime })}
-                />
-                <TextInputMask
-                    style={styles.input}
-                    type={'credit-card'}
-                    options={{
-                        obfuscated: true
-                    }}
-                    placeholder={'credit-card obfuscated'}
-                    value={this.state.creditCard}
-                    onChangeText={creditCard => {
-                        this.setState({ creditCard })
-                        console.log(this.state)
-                    }}
-                />
-                <TextInputMask
-                    style={styles.input}
-                    type={'custom'}
-                    options={{
-                        mask: '999$999',
-                        translation: {
-                            $: val => {
-                                return val === ' ' || val === '0' ? val : ''
-                            }
-                        }
-                    }}
-                    placeholder={'custom 999$999'}
-                    value={this.state.custom}
-                    onChangeText={custom => {
-                        this.setState({ custom })
-                        console.log(this.state)
-                    }}
-                />
-                <TextInputMask
-                    style={styles.input}
-                    type={'money'}
-                    placeholder={'money'}
-                    value={this.state.money}
-                    onChangeText={money => {
-                        this.setState({ money })
-                        console.log(this.state)
-                    }}
-                />
-                <TextInputMask
-                    style={styles.input}
-                    type="custom"
-                    options={{ mask: '999 (99) 999 99 99' }}
-                    placeholder={'custom 999 (99) 999 99 99'}
+                    type="cpf-cnpj"
+                    placeholder={'cpf-cnpj'}
                 />
             </View>
         )

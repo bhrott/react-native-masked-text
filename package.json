@@ -1,6 +1,6 @@
 {
     "name": "react-native-masked-text",
-    "version": "1.9.0",
+    "version": "1.9.1",
     "description": "Text and TextInput with mask for React Native applications",
     "licenses": [
         {
@@ -14,7 +14,8 @@
         "test": "jest",
         "build": "babel ./rnmt.js ./lib/*.js ./lib/**/*.js -d ./dist",
         "prepublish": "npm test && npm run clean && npm run build",
-        "start": "node node_modules/react-native/local-cli/cli.js start"
+        "start": "node node_modules/react-native/local-cli/cli.js start",
+        "ios": "react-native run-ios"
     },
     "repository": {
         "type": "git",

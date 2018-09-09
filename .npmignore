@@ -6,6 +6,5 @@ android/
 ios/
 App.js
 app.json
-index.js
 .watchmanconfig
 .buckconfig
