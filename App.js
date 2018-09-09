@@ -20,8 +20,8 @@ export default class App extends Component {
             <View style={styles.container}>
                 <TextInputMask
                     style={styles.input}
-                    type="cpf-cnpj"
-                    placeholder={'cpf-cnpj'}
+                    type="cpf"
+                    placeholder={'cpf'}
                 />
             </View>
         )
