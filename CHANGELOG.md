@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+-   [#95](https://github.com/benhurott/react-native-masked-text/issues/95): Number value cause errors into only-numbers mask (thanks to [dfsilva](https://github.com/dfsilva) for reporting)
+
 ## [1.9.1] - 2018-09-09
 
 -   Fix [#92](https://github.com/benhurott/react-native-masked-text/issues/92): Unable to resolve module ./masks in v1.9.0 (thanks to [ahce](https://github.com/ahce) for reporting)
