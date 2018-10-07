@@ -5,6 +5,7 @@
 ### Fixed
 
 -   [#95](https://github.com/benhurott/react-native-masked-text/issues/95): Number value cause errors into only-numbers mask (thanks to [dfsilva](https://github.com/dfsilva) for reporting)
+-   [#96](https://github.com/benhurott/react-native-masked-text/issues/96): cel-phone mask is not changing properly. (thanks to [jgfidelis](https://github.com/jgfidelis) for reporting)
 
 ## [1.9.1] - 2018-09-09
 
