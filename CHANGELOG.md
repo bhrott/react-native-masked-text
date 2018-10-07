@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [1.9.2] - 2018-10-06
+
 ### Fixed
 
 -   [#95](https://github.com/benhurott/react-native-masked-text/issues/95): Number value cause errors into only-numbers mask (thanks to [dfsilva](https://github.com/dfsilva) for reporting)
