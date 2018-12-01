@@ -43,7 +43,7 @@ export default class MyComponent extends Component {
 		// the type is required but options is required only for some specific types.
 		return (
 			<TextInputMask
-				refInput={(ref) => this.myDateText = ref;}
+				ref={(ref) => this.myDateText = ref}
 				type={'datetime'}
 				options={{
 					format: 'DD-MM-YYYY HH:mm:ss'
@@ -116,7 +116,7 @@ const Textfield = MKTextField.textfield()
 
 
 <TextInputMask
-	refInput={(ref) => this.myDateText = ref;}
+	ref={(ref) => this.myDateText = ref}
 	type={'money'}
 	style={styles.input}
 	customTextInput={Textfield}
@@ -148,7 +148,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <TextInputMask
-          refInput={(ref) => this.myDateText = ref;}
+          ref={(ref) => this.myDateText = ref}
           // here we set the custom component and their props.
           customTextInput={Kaede}
           customTextInputProps={{
