@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## [1.10.0] - 2019-01-06
+
+### Added
+
+- Credit Card Mask: adding support for `diners` and `amex`. (Thanks to [Marin Bezhanov](https://github.com/mbezhanov))
+
 ## [1.9.2] - 2018-10-06
 
 ### Fixed

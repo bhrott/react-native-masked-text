@@ -88,3 +88,19 @@ test('getMask obfuscated returns 9999 **** **** 9999', () => {
 
     expect(received).toBe(expected)
 })
+
+test('get masked value with amex issuer must return 1234 123456 12345', () => {
+    var mask = new CreditCardMask()
+    var expected = '1234 123456 12345'
+    var received = mask.getValue('123412345612345', { issuer: 'amex' })
+
+    expect(received).toBe(expected)
+})
+
+test('getMask with diners issuer must return 1234 123456 1234', () => {
+    var mask = new CreditCardMask()
+    var expected = '1234 123456 1234'
+    var received = mask.getValue('12341234561234', { issuer: 'diners' })
+
+    expect(received).toBe(expected)
+})
