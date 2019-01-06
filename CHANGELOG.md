@@ -8,6 +8,11 @@
 
 - Credit Card Mask: adding support for `diners` and `amex`. (Thanks to [Marin Bezhanov](https://github.com/mbezhanov))
 
+### Fix
+
+- [#107](https://github.com/benhurott/react-native-masked-text/issues/107): Props missing - TypeScript map out of date.
+- [#115](https://github.com/benhurott/react-native-masked-text/issues/115): setNativeProps is not a function
+
 ## [1.9.2] - 2018-10-06
 
 ### Fixed
