@@ -40,6 +40,7 @@ export interface TextInputMaskOptionProp {
 
     // Credit card type.
     obfuscated?: boolean
+    issuer: 'visa-or-mastercard' | 'diners' | 'amex'
 
     // Custom type.
     mask?: string
@@ -55,6 +56,8 @@ export interface TextInputMaskProps extends TextInputProps {
     checkText?: (previous: string, next: string) => boolean
     onChangeText?: (text: string) => void
     refInput?: (ref: any) => void
+    customTextInput?: any
+    customTextInputProps?: Object
 }
 
 // TextInputMask Component
