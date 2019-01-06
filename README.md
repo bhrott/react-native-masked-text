@@ -313,8 +313,9 @@ Some types accept options, use it like this: `<TextInputMask type={'money'} opti
 
 **For `type={'credit-card'}`** <br />
 
--   _options={...}_ \* `obfuscated` (Boolean, default false): if the mask must be `9999 **** **** 9999`
-
+-   _options={...}_
+    -   `obfuscated` (Boolean, default false): if the mask must be `9999 **** **** 9999`
+    -   `issuer` (String, default ''): the credit card issuer. Ex: `visa`, `mastercard`, `amex`, `diners`
 ### Methods
 
 -   `getElement()`: return the instance of _TextInput_ component.
