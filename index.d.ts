@@ -40,7 +40,7 @@ export interface TextInputMaskOptionProp {
 
     // Credit card type.
     obfuscated?: boolean
-    issuer: 'visa-or-mastercard' | 'diners' | 'amex'
+    issuer?: 'visa-or-mastercard' | 'diners' | 'amex'
 
     // Custom type.
     mask?: string

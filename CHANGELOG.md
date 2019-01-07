@@ -2,13 +2,19 @@
 
 ## Unreleased
 
+## [1.10.1] - 2019-01-07
+
+### Fixed
+
+- Fixing `issuer` in ts file. (Thanks to [Gabe Lerner](https://github.com/gabelerner))
+
 ## [1.10.0] - 2019-01-06
 
 ### Added
 
 - Credit Card Mask: adding support for `diners` and `amex`. (Thanks to [Marin Bezhanov](https://github.com/mbezhanov))
 
-### Fix
+### Fixed
 
 - [#107](https://github.com/benhurott/react-native-masked-text/issues/107): Props missing - TypeScript map out of date.
 - [#115](https://github.com/benhurott/react-native-masked-text/issues/115): setNativeProps is not a function
