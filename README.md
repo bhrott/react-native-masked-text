@@ -474,6 +474,24 @@ var money = MaskService.toMask('money', '123', {
 // money -> US$ 1.23
 ```
 
+Ex 2:
+
+``` ts
+import { DatetimeMask } from 'react-native-masked-text/lib/masks'
+import { MaskService } from 'react-native-masked-text'
+export default class HMask {
+  static raw(value) {
+    const format = 'YYYY-MM-DD'
+    const mask = new DatetimeMask()
+    if (MaskService.isValid('datetime', value, { format: format })) {
+      return value
+    }
+    const moment = mask.getRawValue(value, { format: 'DD/MM/YYYY' })
+    return moment.format(format)
+  }
+}
+
+
 ## Throubleshooting
 
 -   If the `es2015` error throw by babel, try run `react-native start --reset-cache`
