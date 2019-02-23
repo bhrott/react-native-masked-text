@@ -280,7 +280,9 @@ Ex: `AAA-9999`
 Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/Custom.js)):
 
 ```jsx
-// SIMPLES
+//
+// SIMPLE
+// 
 <TextInputMask
   type={'custom'}
   options={{
@@ -303,7 +305,10 @@ Sample code ([source](https://github.com/benhurott/react-native-masked-text-samp
   style={textInputStype}
 />
 
+
+//
 // ADVANCED
+// 
 <TextInputMask
   type={'custom'}
   options={{
