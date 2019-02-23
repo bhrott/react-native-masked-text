@@ -23,7 +23,7 @@ Mask: `999.999.999-99`
 
 Sample code:
 
-<iframe src="https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/Cpf.js">
+<iframe src="https://raw.githubusercontent.com/benhurott/react-native-masked-text-samples/master/ReactNativeMaskedTextSamples/Samples/Cpf.js"></iframe>
 
 ## Usage (TextMask)
 
