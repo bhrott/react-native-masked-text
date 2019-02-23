@@ -34,6 +34,7 @@ export interface TextInputMaskOptionProp {
     // Phone type.
     withDDD?: boolean
     dddMask?: string
+    international?: boolean
 
     // Datetime type.
     format?: string
