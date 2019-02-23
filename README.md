@@ -44,7 +44,7 @@ import { TextInputMask } from 'react-native-masked-text'
 
 Mask:
 
--   BRL (default): `(99) 9999-9999` or `(99) 99999-9999`
+-   BRL (default): `(99) 9999-9999` or `(99) 99999-9999` (will detect automatically)
 -   INTERNATIONAL: `+999 999 999 999`
 
 If you need a different formatting, use the `Custom` mask =).
@@ -65,7 +65,6 @@ Sample code ([source](https://github.com/benhurott/react-native-masked-text-samp
       international: text
     })
   }}
-  style={textInputStype}
 />
 ```
 #### Options
@@ -75,6 +74,35 @@ Sample code ([source](https://github.com/benhurott/react-native-masked-text-samp
 | maskType | string | no | `maskType` | the type of the mask to use. Available: `BRL` or `INTERNATIONAL` |
 | withDDD | boolean | no | `true` | if the mask type is `BRL`, include the DDD |
 | dddMask | string | no | `(99) ` | if the mask type is `BRL`, the DDD mask |
+
+#### Methods
+
+You can get the `unmasked` value using the `getRawValue` method:
+
+```jsx
+<TextInputMask
+  type={'cel-phone'}
+  options={{
+    maskType: 'BRL',
+    withDDD: true,
+    dddMask: '(99) '
+  }}
+  value={this.state.international}
+  onChangeText={text => {
+    this.setState({
+      international: text
+    })
+  }}
+  // add the ref to a local var
+  ref={(ref) => this.phoneField = ref}
+/>
+
+//...
+
+const unmasked = this.phoneField.getRawValue()
+// in the mask: (51) 98765-4321
+// unmasked: 51987654321
+```
 
 
 ### CPF
@@ -118,6 +146,14 @@ const cpfIsValid = this.cpfField.isValid()
 console.log(cpfIsValid) // boolean
 ```
 
+You can get the `unmasked` cpf calling the `getRawValue` method:
+
+```jsx
+const unmasked = this.cpfField.getRawValue()
+// in the mask: 123.456.789-01
+// unmasked: 12345678901
+```
+
 ### CNPJ
 
 Mask: `99.999.999/9999-99`
@@ -159,6 +195,15 @@ const cnpjIsValid = this.cnpjField.isValid()
 console.log(cnpjIsValid) // boolean
 ```
 
+
+You can get the `unmasked` cpf calling the `getRawValue` method:
+
+```jsx
+const unmasked = this.cnpjField.getRawValue()
+// in the mask: 99.999.999/9999-99
+// unmasked: 99999999999999
+```
+
 ### Credit Card
 
 Mask:
@@ -193,9 +238,37 @@ Sample code ([source](https://github.com/benhurott/react-native-masked-text-samp
 | issuer     | string  | no       | `visa-or-mastercard` | the type of the card mask. The options are: `visa-or-mastercard`, `amex` or `diners` |
 
 
+#### Methods
+
+You can get the array containing the groups of the value value using the `getRawValue` method:
+
+```jsx
+<TextInputMask
+  type={'credit-card'}
+  options={{
+    obfuscated: false,
+    issuer: 'amex'
+  }}
+  value={this.state.creditCard}
+  onChangeText={text => {
+    this.setState({
+      creditCard: text
+    })
+  }}
+  // add the ref to a local var
+  ref={(ref) => this.creditCardField = ref}
+/>
+
+//...
+
+const unmasked = this.creditCardField.getRawValue()
+// in the mask: 9874 6541 3210 9874
+// unmasked: [9874, 6541, 3210, 9874]
+```
+
 ### Custom
 
-Mask: `defined by patter`
+Mask: `defined by pattern`
 
 * `9` - accept digit.
 * `A` - accept alpha.
@@ -489,6 +562,32 @@ Sample code ([source](https://github.com/benhurott/react-native-masked-text-samp
   }}
 />
 ```
+
+#### Methods
+
+You can get the `unmasked` value using the `getRawValue` method:
+
+```jsx
+<TextInputMask
+  type={'zip-code'}
+  value={this.state.value}
+  onChangeText={text => {
+    this.setState({
+      value: text
+    })
+  }}
+  // add the ref to a local var
+  ref={(ref) => this.zipCodeField = ref}
+/>
+
+//...
+
+const unmasked = this.zipCodeField.getRawValue()
+// in the mask: 98765-321
+// unmasked: 98765321
+```
+
+
 
 ### ... Utils
 
