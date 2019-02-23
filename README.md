@@ -17,386 +17,611 @@ React-native: 0.32.0 or higher
 
 ## Usage (TextInputMask)
 
-```jsx
-import React, { Component } from 'react'
+For all the masks you will use in this way:
 
-// import the component
+```jsx
 import { TextInputMask } from 'react-native-masked-text'
 
-export default class MyComponent extends Component {
-	constructor(props) {
-		super(props)
-	}
-
-	componentDidMount() {
-		// isValid method returns if the inputed value is valid.
-		// Ex: if you input 40/02/1990 30:20:20, it will return false
-		//	   because in this case, the day and the hour is invalid.
-		let valid = this.myDateText.isValid();
-
-		// get converted value. Using type=datetime, it returns the moment object.
-		// If it's using type=money, it returns a Number object.
-		let rawValue = this.myDateText.getRawValue();
-	}
-
-	render() {
-		// the type is required but options is required only for some specific types.
-		return (
-			<TextInputMask
-				ref={(ref) => this.myDateText = ref}
-				type={'datetime'}
-				options={{
-					format: 'DD-MM-YYYY HH:mm:ss'
-				}}
-			/>
-		)
-	}
-}
-```
-
-### Props
-
-#### type
-
-_credit-card_: use the mask 9999 9999 9999 9999. It accepts options (see later in this doc). <br />
-_cpf_: use the mask `999.999.999-99` and `numeric` keyboard. <br />
-_cnpj_: use the mask `99.999.999/9999-99` and `numeric` keyboard. <br />
-_zip-code_: use the mask `99999-999` and `numeric` keyboard. <br />
-_only-numbers_: accept only numbers on field with `numeric` keyboard. <br />
-_money_: use the mask `R$ 0,00` on the field with `numeric` keyboard. It accepts options (see later in this doc). <br />
-_cel-phone_: use the mask `(99) 9999-9999` or `(99) 99999-9999` (changing automaticaly by length). It accepts options (see later in this doc). <br />
-_datetime_: use datetime mask with moment format (default DD/MM/YYYY HH:mm:ss). It accepts options (see later in this doc). <br />
-_custom_: use your custom mask (see the options props later in this doc). <br />
-
-#### onChangeText
-
-Invoked after new value applied to mask.
-
-```jsx
-/**
- * @param {String} text the text AFTER mask is applied.
-*/
-onChangeText(text) {
-	// ...
-}
+//...
 
 <TextInputMask
-	type={'only-numbers'}
-	onChangeText={this.onChangeText.bind(this)} />
-```
-
-#### checkText
-
-Allow you to check and prevent value to be inputed.
-
-```jsx
-/**
- * @param {String} previous the previous text in the masked field.
- * @param {String} next the next text that will be setted to field.
- * @return {Boolean} return true if must accept the value.
-*/
-checkText(previous, next) {
-	return next === 'your valid value or other boolean condition';
-}
-
-<TextInputMask
-	type={'only-numbers'}
-	checkText={this.checkText.bind(this)} />
-```
-
-#### customTextInput
-
-You can use this prop if you want custom text input instead native TextInput component:
-
-```jsx
-const Textfield = MKTextField.textfield()
-  .withPlaceholder('Text...')
-  .withStyle(styles.textfield)
-  .build();
-
-
-<TextInputMask
-	ref={(ref) => this.myDateText = ref}
-	type={'money'}
-	style={styles.input}
-	customTextInput={Textfield}
-	placeholder="Enter text to see events"
+  type={'type-of-the-mask'}
+  options={
+    {
+      // the options for your mask if needed
+    }
+  }
+  value={this.state.text}
+  onChangeText={text => {
+    this.setState({
+      text: text
+    })
+  }}
 />
 ```
 
-#### customTextInputProps
+### Cel Phone
 
-Some custom inputs like [react-native-textinput-effects](https://github.com/halilb/react-native-textinput-effects) have to set properties in mount time. For these types of components we use this property.
+Mask:
+
+-   BRL (default): `(99) 9999-9999` or `(99) 99999-9999` (will detect automatically)
+-   INTERNATIONAL: `+999 999 999 999`
+
+If you need a different formatting, use the `Custom` mask =).
+
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/CelPhone.js)):
 
 ```jsx
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
+<TextInputMask
+  type={'cel-phone'}
+  options={{
+    maskType: 'BRL',
+    withDDD: true,
+    dddMask: '(99) '
+  }}
+  value={this.state.international}
+  onChangeText={text => {
+    this.setState({
+      international: text
+    })
+  }}
+/>
+```
+#### Options
 
-import { TextInputMask } from 'react-native-masked-text'
-import { Kaede } from 'react-native-textinput-effects'
+| name       | type    | required | default | description |
+| ---------- | ------- | -------- | ------- | ----------- |
+| maskType | string | no | `maskType` | the type of the mask to use. Available: `BRL` or `INTERNATIONAL` |
+| withDDD | boolean | no | `true` | if the mask type is `BRL`, include the DDD |
+| dddMask | string | no | `(99) ` | if the mask type is `BRL`, the DDD mask |
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props)
+#### Methods
 
-    this.state = {
-      birthday: ''
-    }
-  }
+You can get the `unmasked` value using the `getRawValue` method:
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <TextInputMask
-          ref={(ref) => this.myDateText = ref}
-          // here we set the custom component and their props.
-          customTextInput={Kaede}
-          customTextInputProps={{
-            style:{ width: '80%' },
-            label:'Birthday'
-          }}
+```jsx
+<TextInputMask
+  type={'cel-phone'}
+  options={{
+    maskType: 'BRL',
+    withDDD: true,
+    dddMask: '(99) '
+  }}
+  value={this.state.international}
+  onChangeText={text => {
+    this.setState({
+      international: text
+    })
+  }}
+  // add the ref to a local var
+  ref={(ref) => this.phoneField = ref}
+/>
 
-          type={'datetime'}
-          options={{
-            format: 'DD-MM-YYYY HH:mm:ss'
-          }}
+//...
 
-          // don't forget: the value and state!
-          onChangeText={birthday => this.setState({ birthday })}
-          value={this.state.birthday} />
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center'
-	}
-})
+const unmasked = this.phoneField.getRawValue()
+// in the mask: (51) 98765-4321
+// unmasked: 51987654321
 ```
 
-#### TextInput Props
 
-You can use the native props of TextInput, with this in mind:
+### CPF
 
--   onChangeText is intercepted by component.
--   value is intercepted by component.
--   if you pass keyboardType, it will override the keyboardType of masked component.
+Mask: `999.999.999-99`
 
-#### TextInput Methods
-
-If you want to use the methods of the native TextInput, use the `getElement()` method:
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/Cpf.js)):
 
 ```jsx
-export default class App extends React.Component {
-    onGoFocus() {
-        // when you call getElement method, the instance of native TextInput will returned.
-        this._myTextInputMask.getElement().focus()
-    }
+<TextInputMask
+  type={'cpf'}
+  value={this.state.cpf}
+  onChangeText={text => {
+    this.setState({
+      cpf: text
+    })
+  }}
+/>
+```
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <View>
-                    <TextInputMask
-                        ref={ref => (this._myTextInputMask = ref)}
-                        type={'only-numbers'}
-                        style={styles.input}
-                    />
-                </View>
-                <View>
-                    <Button
-                        onPress={this.onGoFocus.bind(this)}
-                        title="Go Focus Hue"
-                        color="#841584"
-                    />
-                </View>
-            </View>
-        )
-    }
-}
+#### Methods
+
+You can check if the cpf is valid by calling the `isValid()` method:
+
+```jsx
+<TextInputMask
+  type={'cpf'}
+  value={this.state.cpf}
+  onChangeText={text => {
+    this.setState({
+      cpf: text
+    })
+  }}
+  // add the ref to a local var
+  ref={(ref) => this.cpfField = ref}
+/>
+
+// get the validation
+
+const cpfIsValid = this.cpfField.isValid()
+console.log(cpfIsValid) // boolean
+```
+
+You can get the `unmasked` cpf calling the `getRawValue` method:
+
+```jsx
+const unmasked = this.cpfField.getRawValue()
+// in the mask: 123.456.789-01
+// unmasked: 12345678901
+```
+
+### CNPJ
+
+Mask: `99.999.999/9999-99`
+
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/Cnpj.js)):
+
+```jsx
+<TextInputMask
+  type={'cnpj'}
+  value={this.state.cnpj}
+  onChangeText={text => {
+    this.setState({
+      cnpj: text
+    })
+  }}
+/>
+```
+
+#### Methods
+
+You can check if the cnpj is valid by calling the `isValid()` method:
+
+```jsx
+<TextInputMask
+  type={'cnpj'}
+  value={this.state.cnpj}
+  onChangeText={text => {
+    this.setState({
+      cnpj: text
+    })
+  }}
+  // add the ref to a local var
+  ref={(ref) => this.cnpjField = ref}
+/>
+
+// get the validation
+
+const cnpjIsValid = this.cnpjField.isValid()
+console.log(cnpjIsValid) // boolean
+```
+
+
+You can get the `unmasked` cpf calling the `getRawValue` method:
+
+```jsx
+const unmasked = this.cnpjField.getRawValue()
+// in the mask: 99.999.999/9999-99
+// unmasked: 99999999999999
+```
+
+### Credit Card
+
+Mask:
+
+-   visa or master: `9999 9999 9999 9999` or `9999 **** **** 9999` (obfuscated)
+-   amex: `9999 999999 99999` or `9999 ****** 99999` (obfuscated)
+-   diners: `9999 999999 9999` or `9999 ****** 9999` (obfuscated)
+
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/CreditCard.js))
+
+```jsx
+<TextInputMask
+  type={'credit-card'}
+  options={{
+    obfuscated: false,
+    issuer: 'amex'
+  }}
+  value={this.state.creditCard}
+  onChangeText={text => {
+    this.setState({
+      creditCard: text
+    })
+  }}
+/>
 ```
 
 #### Options
 
-Some types accept options, use it like this: `<TextInputMask type={'money'} options={{ unit: 'US$' }} />`
+| name       | type    | required | default              | description |
+| ---------- | ------- | -------- | -------------------- | ----------- |
+| obfuscated | boolean | no       | `false`              | if the mask should be obfuscated or not|
+| issuer     | string  | no       | `visa-or-mastercard` | the type of the card mask. The options are: `visa-or-mastercard`, `amex` or `diners` |
 
-**For `type={'money'}`** <br />
 
--   _options={...}_
-    -   `precision` (Number, default 2): the decimal places.
-    -   `separator` (String, default ','): the decimal separator.
-    -   `delimiter` (String, default '.'): the thousand separator.
-    -   `unit`: (String, default 'R$'): the prefix text.
-    -   `suffixUnit` (String, default ''): the suffix text.
-    -   `zeroCents` (Boolean, default false): if must show cents.
+#### Methods
 
-**For `type={'cel-phone'}`** <br />
-
--   _options={...}_
-    -   `withDDD` (Boolean, default true): if the ddd will be include in the mask.
-    -   `dddMask` (String, default '(99) '): the default mask applied if `withDDD` is true.
-
-**For `type={'datetime'}`** <br />
-
--   _options={...}_
-    -   `format` (String, default DD/MM/YYYY HH:mm:ss): moment date format. It accepts the following:
-    -   DD/MM/YYYY HH:mm:ss
-    -   DD/MM/YYYY
-    -   MM/DD/YYYY
-    -   YYYY/MM/DD
-    -   HH:mm:ss
-    -   HH:mm
-    -   HH
-    -   _You can use all of dates with `-` instead of `/` if you want_
-
-**For `type={'custom'}`** <br />
-
--   _options={...}_
+You can get the array containing the groups of the value value using the `getRawValue` method:
 
 ```jsx
-{
-	/**
-	 * mask: (String | required | default '')
-	 * the mask pattern
-	 * 9 - accept digit.
-	 * A - accept alpha.
-	 * S - accept alphanumeric.
-	 * * - accept all, EXCEPT white space.
-	*/
-	mask: '999#AAA',
+<TextInputMask
+  type={'credit-card'}
+  options={{
+    obfuscated: false,
+    issuer: 'amex'
+  }}
+  value={this.state.creditCard}
+  onChangeText={text => {
+    this.setState({
+      creditCard: text
+    })
+  }}
+  // add the ref to a local var
+  ref={(ref) => this.creditCardField = ref}
+/>
 
-	/**
-	 * validator: (Function | optional | defaults returns true)
-	 * use this funcion to inform if the inputed value is a valid value (for invalid phone numbers, for example). The isValid method use this validator.
-	*/
-	validator: function(value, settings) {
-		return true
-	},
-	/**
-	 * getRawValue: (Function | optional | defaults return current masked value)
-	 * use this function to parse and return values to use what you want.
-	 * for example, if you want to create a phone number mask (999) 999-99-99 but want to get only
-	 * the numbers for value, use this method for this parse step.
-	*/
-	getRawValue: function(value, settings) {
-		return 'my converted value';
-	},
-	/**
-	 * translation: (Object | optional | defaults 9, A, S, *)
-	 * the dictionary that translate mask and value.
-	 * you can change defaults by simple override the key (9, A, S, *) or create some new.
-	*/
-	translation: {
-		// this is a custom translation. The others (9, A, S, *) still works.
-		// this translation will be merged and turns into 9, A, S, *, #.
-		'#': function(val) {
-			if (val === ' ') {
-				return val;
-			}
+//...
 
-			// if returns null, undefined or '' (empty string), the value will be ignored.
-			return null;
-		},
-		// in this case, we will override build-in * translation (allow all characters)
-		// and set this to allow only blank spaces and some special characters.
-		'*': function(val) {
-			return [' ', '#', ',', '.', '!'].indexOf(val) >= 0 ? val : null;
-		}
-	}
-}
+const unmasked = this.creditCardField.getRawValue()
+// in the mask: 9874 6541 3210 9874
+// unmasked: [9874, 6541, 3210, 9874]
 ```
 
-**For `type={'credit-card'}`** <br />
+### Custom
 
--   _options={...}_
-    -   `obfuscated` (Boolean, default false): if the mask must be `9999 **** **** 9999`.
-    -   `issuer` (String, default 'visa-or-mastercard'): the credit card issuer.
-        - options:
-            - `visa-or-mastercard`: will apply the mask `9999 9999 9999 9999` / `9999 **** **** 9999`.
-            - `amex`: will apply the mask `9999 999999 99999` / `9999 ****** 99999`.
-            - `diners`: will apply the mask `9999 999999 9999` / `9999 ****** 9999`.
-### Methods
+Mask: `defined by pattern`
 
--   `getElement()`: return the instance of _TextInput_ component.
--   `isValid()`: if the value inputed is valid for the mask.
-    -   _credit-card_: return true if the mask is complete.
-    -   _cpf_: return true if the mask is complete and cpf is valid.
-    -   _cnpj_: return true if the mask is complete and cnpj is valid.
-    -   _zip-code_: return true if the mask is complete.
-    -   _only-numbers_: always returns true.
-    -   _money_: always returns true.
-    -   _cel-phone_: return true if the mask is complete.
-    -   _datetime_: return true if the date value is valid for format.
-    -   _custom_: use custom validation, if it not exist, always returns true.
--   `getRawValue()`: get the converted value of mask.
-    -   _credit-card_: return the array with the value parts. Ex: `1234 1234 1234 1234` returns `[1234, 1234, 1234, 1234]`.
-    -   _cpf_: return the value without mask.
-    -   _cnpj_: return the value without mask.
-    -   _zip-code_: return the value without mask.
-    -   _only-numbers_: return the value without mask.
-    -   _money_: return the Number value. Ex: `R$ 1.234,56` returns `1234.56`.
-    -   _cel-phone_: return the value without mask.
-    -   _datetime_: return the `moment` object for the date and format.
-    -   _custom_: use custom method (passed in options). If it not exists, returns the current value.
+* `9` - accept digit.
+* `A` - accept alpha.
+* `S` - accept alphanumeric.
+* `*` - accept all, EXCEPT white space.
 
-Sample usage:
+Ex: `AAA-9999` 
+
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/Custom.js)):
 
 ```jsx
-import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
-import { TextInputMask } from 'react-native-masked-text'
+//
+// SIMPLE
+// 
+<TextInputMask
+  type={'custom'}
+  options={{
+    /**
+     * mask: (String | required | default '')
+     * the mask pattern
+     * 9 - accept digit.
+     * A - accept alpha.
+     * S - accept alphanumeric.
+     * * - accept all, EXCEPT white space.
+    */
+    mask: '999 AAA SSS ***'
+  }}
+  value={this.state.text}
+  onChangeText={text => {
+    this.setState({
+      text: text
+    })
+  }}
+  style={textInputStype}
+/>
 
-export default class App extends Component {
-    state = {
-        datetime: ''
-    }
-    render() {
-        return (
-            <View style={styles.container}>
-                <TextInputMask
-                    {/*First, set the reference*/}
-                    ref={ref => (this._myDatetimeField = ref)}
-                    style={styles.input}
-                    type={'datetime'}
-                    options={{
-                        format: 'DD-MM-YYYY HH:mm:ss'
-                    }}
-                    placeholder={'datetime DD-MM-YYYY HH:mm:ss'}
-                    value={this.state.datetime}
-                    onChangeText={datetime => {
-                        this.setState({ datetime })
 
-                        // Now just use =)
-                        console.log(this._myDatetimeField.getElement())
-                        console.log(this._myDatetimeField.isValid())
-                        console.log(this._myDatetimeField.getRawValue())
-                    }}
-                />
-            </View>
-        )
-    }
-}
+//
+// ADVANCED
+// 
+<TextInputMask
+  type={'custom'}
+  options={{
+    // required
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF'
+    /**
+     * mask: (String | required | default '')
+     * the mask pattern
+     * 9 - accept digit.
+     * A - accept alpha.
+     * S - accept alphanumeric.
+     * * - accept all, EXCEPT white space.
+    */
+    mask: '999 AAA SSS ***',
+
+    // optional
+
+    /**
+     * validator: (Function | optional | defaults returns true)
+     * use this funcion to inform if the inputed value is a valid value (for invalid phone numbers, for example). The isValid method use this validator.
+    */
+    validator: function(value, settings) {
+      return true
     },
-    input: {
-        height: 50,
-        width: '80%',
-        borderColor: 'steelblue',
-        borderWidth: 2
+
+    /**
+     * getRawValue: (Function | optional | defaults return current masked value)
+     * use this function to parse and return values to use what you want.
+     * for example, if you want to create a phone number mask (999) 999-99-99 but want to get only
+     * the numbers for value, use this method for this parse step.
+    */
+    getRawValue: function(value, settings) {
+      return 'my converted value';
+    },
+    /**
+     * translation: (Object | optional | defaults 9, A, S, *)
+     * the dictionary that translate mask and value.
+     * you can change defaults by simple override the key (9, A, S, *) or create some new.
+    */
+    translation: {
+      // this is a custom translation. The others (9, A, S, *) still works.
+      // this translation will be merged and turns into 9, A, S, *, #.
+      '#': function(val) {
+        if (val === ' ') {
+          return val;
+        }
+
+        // if returns null, undefined or '' (empty string), the value will be ignored.
+        return null;
+      },
+      // in this case, we will override build-in * translation (allow all characters)
+      // and set this to allow only blank spaces and some special characters.
+      '*': function(val) {
+        return [' ', '#', ',', '.', '!'].indexOf(val) >= 0 ? val : null;
+      }
     }
-})
+  }}
+  value={this.state.text}
+  onChangeText={text => {
+    this.setState({
+      text: text
+    })
+  }}
+  style={textInputStype}
+/>
 ```
+
+#### Options
+
+| name       | type    | required | default              | description |
+| ---------- | ------- | -------- | -------------------- | ----------- |
+| mask | string | **YES** | | The mask pattern |
+| validator | function | no | function that returns `true` | the function that's validate the value in the mask |
+| getRawValue | function | no | return current value | function to parsed value (like unmasked or converted) |
+| translation | object (map{string,function}) | no | `9 - digit`, `A - alpha`, `S - alphanumeric`, `* - all, except space` | The translator to use in the pattern |
+
+
+### Datetime
+
+Mask:
+
+* `DD/MM/YYYY HH:mm:ss`
+* `DD/MM/YYYY`
+* `MM/DD/YYYY`
+* `YYYY/MM/DD`
+* `HH:mm:ss`
+* `HH:mm`
+* `HH`
+
+You can use `-` instead of `/` if you want.
+
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/Datetime.js)):
+
+```jsx
+<TextInputMask
+  type={'datetime'}
+  options={{
+    format: 'YYYY/MM/DD'
+  }}
+  value={this.state.dt}
+  onChangeText={text => {
+    this.setState({
+      dt: text
+    })
+  }}
+/>
+```
+
+#### Options
+
+| name       | type    | required | default              | description |
+| ---------- | ------- | -------- | -------------------- | ----------- |
+| format | string | **YES** | | The date format to be validated |
+
+
+#### Methods
+
+You can check if the date is valid by calling the `isValid()` method:
+
+```jsx
+<TextInputMask
+  type={'datetime'}
+  options={{
+    format: 'YYYY/MM/DD'
+  }}
+  value={this.state.dt}
+  onChangeText={text => {
+    this.setState({
+      dt: text
+    })
+  }}
+  // add the ref to a local var
+  ref={(ref) => this.datetimeField = ref}
+/>
+
+// get the validation
+
+const isValid = this.datetimeField.isValid()
+console.log(isValid) // boolean
+```
+
+You can get the [moment](https://momentjs.com/) object from the date if it's valid calling the `getRawValue` method:
+
+```jsx
+const momentDate = this.datetimeField.getRawValue()
+```
+
+### Money
+
+Mask: `R$999,99` (fully customizable)
+
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/Money.js)):
+
+```jsx
+// SIMPLE
+<TextInputMask
+  type={'money'}
+  value={this.state.simple}
+  onChangeText={text => {
+    this.setState({
+      simple: text
+    })
+  }}
+/>
+
+// ADVANCED
+<TextInputMask
+  type={'money'}
+  options={{
+    precision: 2,
+    separator: ',',
+    delimiter: '.',
+    unit: 'R$',
+    suffixUnit: ''
+  }}
+  value={this.state.advanced}
+  onChangeText={text => {
+    this.setState({
+      advanced: text
+    })
+  }}
+/>
+```
+
+#### Options
+
+| name       | type    | required | default              | description |
+| ---------- | ------- | -------- | -------------------- | ----------- |
+| precision | number | no | `2` | The number of cents to show |
+| separator | string | no | `,` | The cents separator |
+| delimiter | string | no | `.` | The thousand separator |
+| unit | string | no | `R$` | The prefix text |
+| suffixUnit | string | no | `''` | The sufix text |
+
+
+#### Methods
+
+You can get the `number` value of the mask calling the `getRawValue` method:
+
+```jsx
+<TextInputMask
+  type={'money'}
+  value={this.state.simple}
+  onChangeText={text => {
+    this.setState({
+      simple: text
+    })
+  }}
+  // add the ref to a local var
+  ref={(ref) => this.moneyField = ref}
+/>
+
+const numberValue = this.moneyField.getRawValue()
+console.log(numberValue) // Number
+
+// CAUTION: the javascript do not support giant numbers.
+// so, if you have a big number in this mask, you could have problems with the value...
+```
+
+
+### Only Numbers
+
+Mask: `accept only numbers`
+
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/ZipCode.js)):
+
+
+```jsx
+<TextInputMask
+  type={'only-numbers'}
+  value={this.state.value}
+  onChangeText={text => {
+    this.setState({
+      value: text
+    })
+  }}
+/>
+```
+
+
+### Zip Code
+
+Mask: `99999-999`
+
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/OnlyNumbers.js)):
+
+
+```jsx
+<TextInputMask
+  type={'zip-code'}
+  value={this.state.value}
+  onChangeText={text => {
+    this.setState({
+      value: text
+    })
+  }}
+/>
+```
+
+#### Methods
+
+You can get the `unmasked` value using the `getRawValue` method:
+
+```jsx
+<TextInputMask
+  type={'zip-code'}
+  value={this.state.value}
+  onChangeText={text => {
+    this.setState({
+      value: text
+    })
+  }}
+  // add the ref to a local var
+  ref={(ref) => this.zipCodeField = ref}
+/>
+
+//...
+
+const unmasked = this.zipCodeField.getRawValue()
+// in the mask: 98765-321
+// unmasked: 98765321
+```
+
+
+
+### ... Utils
+
+#### Getting the `TextInput` instance
+If you want to get the `TextInput` raw component, use the `getElement()` method:
+
+```jsx
+<TextInputMask
+  type={'zip-code'}
+  value={this.state.value}
+  onChangeText={text => {
+    this.setState({
+      value: text
+    })
+  }}
+  // add the ref to a local var
+  ref={(ref) => this.zipCodeField = ref}
+/>
+
+//...
+
+const textInput = this.zipCodeField.getElement()
+```
+
+#### Code Samples
+
+If you want, you can check the code samples in this repo:
+
+[react-native-masked-text-samples](https://github.com/benhurott/react-native-masked-text-samples)
 
 ## Usage (TextMask)
 

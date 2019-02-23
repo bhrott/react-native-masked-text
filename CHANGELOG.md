@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+## [1.11.0] - 2019-02-23
+
+### Added
+
+- Adding `maskType` to `cel-phone` with options: `BRL` and `INTERNATIONAL`.
+
+### Changed
+
+- New documentation in `README`.
+
+### Removed
+
+- [BREAKING CHANGE] The `zeroCents` option was removed from `money` mask, if you want to not show the cents, use the `precision: 0`.
+
+
 ## [1.10.1] - 2019-01-07
 
 ### Fixed
