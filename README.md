@@ -513,6 +513,12 @@ If you want to get the `TextInput` raw component, use the `getElement()` method:
 const textInput = this.zipCodeField.getElement()
 ```
 
+#### Code Samples
+
+If you want, you can check the code samples in this repo:
+
+[react-native-masked-text-samples](https://github.com/benhurott/react-native-masked-text-samples)
+
 ## Usage (TextMask)
 
 ```jsx
