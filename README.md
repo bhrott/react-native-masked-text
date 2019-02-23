@@ -17,13 +17,194 @@ React-native: 0.32.0 or higher
 
 ## Usage (TextInputMask)
 
+For all the masks you will use in this way:
+
+```jsx
+import { TextInputMask } from 'react-native-masked-text'
+
+
+//...
+
+<TextInputMask
+    type={'type-of-the-mask'}
+    options={{
+        // the options for your mask if needed
+    }}
+    value={this.state.text}
+    onChangeText={text => {
+      this.setState({
+        text: text,
+      })
+    }}
+    style={textInputStype}
+/>
+```
+
+
+### Cel Phone
+
+Mask:
+
+* default: `(99) 9999-9999` or `(99) 99999-9999`
+* international: `+999 999 999 999`
+
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/CelPhone.js)):
+
+```jsx
+
+```
+
+
 ### CPF
 
 Mask: `999.999.999-99`
 
-Sample code:
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/Cpf.js)):
 
-<iframe src="https://raw.githubusercontent.com/benhurott/react-native-masked-text-samples/master/ReactNativeMaskedTextSamples/Samples/Cpf.js"></iframe>
+```jsx
+import React from 'react'
+import { View, Text } from 'react-native'
+import { TextInputMask } from 'react-native-masked-text'
+
+import { textInputStype, container } from './styles'
+
+export default class MyScreen extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      cpf: ''
+    }
+  }
+
+  render() {
+    return (
+      <View style={container}>
+        <Text>CPF</Text>
+        <TextInputMask
+          type={'cpf'}
+          value={this.state.cpf}
+          onChangeText={text => {
+            this.setState({
+              cpf: text
+            })
+          }}
+          style={textInputStype}
+        />
+      </View>
+    )
+  }
+}
+```
+
+### CNPJ
+
+Mask: `99.999.999/9999-99`
+
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/Cnpj.js)):
+
+```jsx
+import React from 'react'
+import { View, Text } from 'react-native'
+import { TextInputMask } from 'react-native-masked-text'
+
+import { textInputStype, container } from './styles'
+
+export default class MyScreen extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      cnpj: ''
+    }
+  }
+
+  render() {
+    return (
+      <View style={container}>
+        <Text>CNPJ</Text>
+        <TextInputMask
+          type={'cnpj'}
+          value={this.state.cnpj}
+          onChangeText={text => {
+            this.setState({
+              cnpj: text
+            })
+          }}
+          style={textInputStype}
+        />
+      </View>
+    )
+  }
+}
+```
+
+### Credit Card
+
+Mask:
+
+* visa or master: `9999 9999 9999 9999` or `9999 **** **** 9999` (obfuscated)
+* amex: `9999 999999 99999` or `9999 ****** 99999` (obfuscated)
+* diners: `9999 999999 9999` or `9999 ****** 9999` (obfuscated)
+
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/CreditCard.js))
+
+```jsx
+import React from 'react'
+import { View, Text } from 'react-native'
+import { TextInputMask } from 'react-native-masked-text'
+
+import { textInputStype, container } from './styles'
+
+export default class MyScreen extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      creditCard: ''
+    }
+  }
+
+  render() {
+    return (
+      <View style={container}>
+        <Text>Credit Card</Text>
+        <TextInputMask
+          type={'credit-card'}
+          options={{
+            obfuscated: false,
+            issuer: 'amex'
+          }}
+          value={this.state.creditCard}
+          onChangeText={text => {
+            this.setState({
+              creditCard: text
+            })
+          }}
+          style={textInputStype}
+        />
+      </View>
+    )
+  }
+}
+```
+
+#### Options
+
+| name | type | required | default | description |
+| ---- | ---- | -------- | ------- | ----------- |
+| obfuscated | boolean | no | `false` | if the mask should be obfuscated or not |
+| issuer | string | no | `visa-or-mastercard` | the type of the card mask. The options are: `visa-or-mastercard`, `amex` or `diners` |
+
+
+
+
+
+
+
+
+
+
 
 ## Usage (TextMask)
 
