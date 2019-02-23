@@ -617,6 +617,59 @@ If you want to get the `TextInput` raw component, use the `getElement()` method:
 const textInput = this.zipCodeField.getElement()
 ```
 
+#### Blocking user to add character
+
+If you want, you can block a value to be added to the text using the `checkText` prop:
+
+```jsx
+<TextInputMask
+  //...
+  /**
+   * @param {String} previous the previous text in the masked field.
+   * @param {String} next the next text that will be setted to field.
+   * @return {Boolean} return true if must accept the value.
+  */
+  checkText={
+    (previous, next) => {
+      return next === 'your valid value or other boolean condition';
+    }
+  }
+/>
+```
+
+#### Using custom text inputs
+
+You can use this prop if you want custom text input instead native TextInput component:
+
+```jsx
+const Textfield = MKTextField.textfield()
+  .withPlaceholder('Text...')
+  .withStyle(styles.textfield)
+  .build();
+
+
+<TextInputMask
+  // ...
+
+  // the custom text input component
+  customTextInput={Textfield}
+
+  // the props to be passed to the custom text input
+  customTextInputProps={{
+    style:{ width: '80%' },
+    label:'Birthday'
+  }}
+/>
+```
+
+#### About the normal text input props
+
+You can use all the normal TextInput props from React-Native, with this in mind:
+
+-   onChangeText is intercepted by component.
+-   value is intercepted by component.
+-   if you pass keyboardType, it will override the keyboardType of masked component.
+
 #### Code Samples
 
 If you want, you can check the code samples in this repo:
