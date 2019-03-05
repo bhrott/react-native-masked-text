@@ -117,7 +117,7 @@ test('123 with mask 999 results 123 and raw value 123(type Number)', () => {
     var mask = new CustomMask()
     var options = {
         mask: '999',
-        getRawValue: function(maskedValue, settings) {
+        getRawValue: function (maskedValue, settings) {
             return Number(maskedValue)
         }
     }
@@ -137,7 +137,7 @@ test('mask with custom translation and match', () => {
     var options = {
         mask: '999&AAA',
         translation: {
-            '&': function(val) {
+            '&': function (val) {
                 return ['#', '.', ':'].indexOf(val) >= 0 ? val : null
             }
         }
@@ -154,13 +154,13 @@ test('mask with custom translation and not match', () => {
     var options = {
         mask: '999&AAA',
         translation: {
-            '&': function(val) {
-                return ['#', '.', ':'].indexOf(val) >= 0 ? val : ''
+            '&': function (val) {
+                return ['#', '.', ':'].indexOf(val) >= 0 ? val : '#'
             }
         }
     }
 
-    var expected = '123ABC'
+    var expected = '123#ABC'
     var received = mask.getValue('123|ABC', options)
 
     expect(received).toBe(expected)
@@ -171,7 +171,7 @@ test('mask with custom translation and optionals and matching', () => {
     var options = {
         mask: '999***AAA&',
         translation: {
-            '&': function(val) {
+            '&': function (val) {
                 return ['#', '.', ':'].indexOf(val) >= 0 ? val : null
             }
         }
