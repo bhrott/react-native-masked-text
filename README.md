@@ -592,9 +592,26 @@ const unmasked = this.zipCodeField.getRawValue()
 // unmasked: 98765321
 ```
 
-
-
 ### ... Utils
+
+#### Including the `rawText` in `onChangeText` [1.12.0+]
+
+If you need the raw value in every text change, you can use the `includeRawValueInChangeText`.
+
+It will provide the masked and the raw text in every text change.
+
+```jsx
+<TextInputMask
+  type={'cpf'}
+  value={this.state.value}
+  includeRawValueInChangeText={true}
+  onChangeText={(maskedText, rawText) => {
+    // maskedText: 123.456.789-01
+    // rawText: 12345678901
+  }}
+/>
+```
+
 
 #### Getting the `TextInput` instance
 If you want to get the `TextInput` raw component, use the `getElement()` method:

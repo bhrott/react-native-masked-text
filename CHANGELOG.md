@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+## [1.12.0] - 2019-04-07
+
+### Added
+
+- Adding `rawText` in `onChangeText`. (Thanks to [questionablequestion](https://github.com/questionablequestion))
+
+### Fixed
+
+- Fixing return type of `getRawValue` in `ts definition`. (Thanks to [gabelerner](https://github.com/gabelerner))
+
+### Changed
+
+- Improving component initialization. (Thanks to [rsouthgate](https://github.com/rsouthgate))
+
 ## [1.11.1] - 2019-03-05
 
 ### Fixed

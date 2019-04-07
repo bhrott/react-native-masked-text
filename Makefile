@@ -1,5 +1,4 @@
-copy-to-test:
-	rm -rf ../rn-test/react-native-masked-text
-	npm run clean
-	npm run build
-	cp -R dist ../rn-test/react-native-masked-text
+copy-to-samples:
+	rm -rf /Users/ben/Documents/dev/react-native-masked-text-samples/ReactNativeMaskedTextSamples/lib
+	mkdir /Users/ben/Documents/dev/react-native-masked-text-samples/ReactNativeMaskedTextSamples/lib
+	cp -R lib /Users/ben/Documents/dev/react-native-masked-text-samples/ReactNativeMaskedTextSamples
