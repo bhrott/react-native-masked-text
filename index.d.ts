@@ -51,11 +51,11 @@ export interface TextInputMaskOptionProp {
 }
 
 // TextInputMask Props
-export interface TextInputMaskProps extends TextInputProps {
+export interface TextInputMaskProps extends Pick<TextInputProps, Exclude<keyof TextInputProps, 'onChangeText'>> {
     type: TextInputMaskTypeProp
     options?: TextInputMaskOptionProp
     checkText?: (previous: string, next: string) => boolean
-    onChangeText?: (text: string) => void
+    onChangeText?: (text: string, rawText: string) => void
     refInput?: (ref: any) => void
     customTextInput?: any
     customTextInputProps?: Object
