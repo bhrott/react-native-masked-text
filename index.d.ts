@@ -48,6 +48,9 @@ export interface TextInputMaskOptionProp {
     validator?: (value: string, settings: TextInputMaskOptionProp) => boolean
     getRawValue?: (value: string, settings: TextInputMaskOptionProp) => any
     translation?: { [s: string]: (val: string) => string | null | undefined }
+
+    // Options
+    includeRawValueInChangeText?: boolean
 }
 
 // TextInputMask Props
@@ -55,7 +58,7 @@ export interface TextInputMaskProps extends Pick<TextInputProps, Exclude<keyof T
     type: TextInputMaskTypeProp
     options?: TextInputMaskOptionProp
     checkText?: (previous: string, next: string) => boolean
-    onChangeText?: (text: string, rawText: string) => void
+    onChangeText?: (text: string, rawText?: string) => void
     refInput?: (ref: any) => void
     customTextInput?: any
     customTextInputProps?: Object
