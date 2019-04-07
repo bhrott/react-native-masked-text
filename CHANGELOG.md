@@ -8,6 +8,10 @@
 
 - Fixing return type of `getRawValue` in `ts definition`. (Thanks to [gabelerner](https://github.com/gabelerner))
 
+### Changed
+
+- Improving component initialization. (Thanks to [rsouthgate](https://github.com/rsouthgate))
+
 ## [1.11.1] - 2019-03-05
 
 ### Fixed
