@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## [1.12.1] - 2019-04-09
+
+### Fixed
+
+- Fixing npm install error (https://github.com/benhurott/react-native-masked-text/issues/140).
+
 ## [1.12.0] - 2019-04-07
 
 ### Added
