@@ -31,6 +31,8 @@ import { TextInputMask } from 'react-native-masked-text'
       // the options for your mask if needed
     }
   }
+
+  // dont forget to set the "value" and "onChangeText" props
   value={this.state.text}
   onChangeText={text => {
     this.setState({

@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+## [1.12.2] - 2019-04-22
+
+### Refactor
+
+- Performance improvements
+  - The `state` control was removed from the text mask component, using only the props to handle the mask.
+  - We changed the base text mask from `Component` to `PureComponent`.
+  - BREAKING: the `value` and `onChangeText` are now **required** props.
+  - These changes probably will fix (need to check with the reporters):
+    - [Wrong input inserting unwanted text #146](https://github.com/benhurott/react-native-masked-text/issues/146)
+    - [Flickering of uncontrolled input #136](https://github.com/benhurott/react-native-masked-text/issues/136)
+
 ## [1.12.1] - 2019-04-09
 
 ### Fixed
