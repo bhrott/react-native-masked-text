@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## [1.12.3] - 2019-05-17
+
+### Fix
+
+- Fixing [#162](https://github.com/benhurott/react-native-masked-text/issues/162) initial value when mask is updated. (thanks to [Alessandro Sales](https://github.com/alessandrosales) for reporting)
+
 ## [1.12.2] - 2019-04-22
 
 ### Refactor
