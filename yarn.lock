@@ -1998,6 +1998,11 @@ create-react-class@^15.6.3:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+credit-card-type@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/credit-card-type/-/credit-card-type-8.2.0.tgz#507a43b257f0f3b8bd4d4b339a419741fc7e6236"
+  integrity sha512-+1kZKW717eDTbZ1/EjkEi4+UrD2SygU2Iujn/VlrMHXloGW/y5GqPlQ/KgT4gaoDmWyufBfm/CAzNkpeccfMtA==
+
 cross-spawn@^5.0.1, cross-spawn@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
