@@ -62,6 +62,7 @@ export interface TextInputMaskProps extends Pick<TextInputProps, Exclude<keyof T
     refInput?: (ref: any) => void
     customTextInput?: any
     customTextInputProps?: Object
+    includeRawValueInChangeText?: boolean
 }
 
 // TextInputMask Component
