@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## [1.12.4] - 2019-07-12
+
+### Fix
+
+- [#170](https://github.com/benhurott/react-native-masked-text/issues/170): fixing typing for includeRawValueInChangeText.
+    - thanks to [Sergei Butko](https://github.com/svbutko) for contribution.
+    - thanks to [Agustin G.](https://github.com/agustingabiola) for reporting.
+- [#173](https://github.com/benhurott/react-native-masked-text/issues/173): fixing initial value for money field.
+    - thanks to [Maksim Markelov](https://github.com/mmarkelov) for reporting.
+
 ## [1.12.3] - 2019-05-17
 
 ### Fix
