@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## [1.12.5] - 2019-08-03
+
+### Fix
+
+- [#176](https://github.com/benhurott/react-native-masked-text/issues/176) Deprecation Warning: componentWillReceiveProps
+    - Thanks to [Maksim Markelov](https://github.com/mmarkelov) for contributing!
+
 ## [1.12.4] - 2019-07-12
 
 ### Fix
