@@ -9,6 +9,11 @@
 - [#176](https://github.com/benhurott/react-native-masked-text/issues/176) Deprecation Warning: componentWillReceiveProps
     - Thanks to [Maksim Markelov](https://github.com/mmarkelov) for contributing!
 
+### Chore
+
+- Use find instead of filter on mask resolver.
+    - Thanks to [rodineijf](https://github.com/rodineijf) for contributing!
+
 ## [1.12.4] - 2019-07-12
 
 ### Fix
