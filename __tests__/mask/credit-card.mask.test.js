@@ -1,5 +1,12 @@
 import { CreditCardMask } from '../../lib/masks'
 
+const testCards = {
+    visa: '4263982640269299',
+    mastercard: '5425233430109903',
+    amex: '374245455400126',
+    maestro: '6759649826438453'
+}
+
 test('getType results credit-card', () => {
     var expected = 'credit-card'
     var received = CreditCardMask.getType()
@@ -7,73 +14,53 @@ test('getType results credit-card', () => {
     expect(received).toBe(expected)
 })
 
-test('1234123412341234 results 1234 1234 1234 1234', () => {
+test('basic formatting', () => {
     var mask = new CreditCardMask()
-    var expected = '1234 1234 1234 1234'
-    var received = mask.getValue('1234123412341234')
+    var expected = '4263 9826 4026 9299'
+    var received = mask.getValue(testCards.visa)
 
     expect(received).toBe(expected)
 })
 
-test('1234123412341234 obfuscated true results 1234 **** **** 1234', () => {
+test('obfuscated formatting', () => {
     var mask = new CreditCardMask()
-    var expected = '1234 **** **** 1234'
-    var received = mask.getValue('1234123412341234', {
+    var expected = '4263 **** **** 9299'
+    var received = mask.getValue(testCards.visa, {
         obfuscated: true
     })
 
     expect(received).toBe(expected)
 })
 
-test('1234123412341234 obfuscated false results 1234 1234 1234 1234', () => {
+test('correct raw value of basic formatting', () => {
     var mask = new CreditCardMask()
-    var expected = '1234 1234 1234 1234'
-    var received = mask.getValue('1234123412341234', {
-        obfuscated: false
-    })
+    var received = mask.getValue(testCards.visa)
 
-    expect(received).toBe(expected)
-})
-
-test('1234123412341234 obfuscated false results 1234 1234 1234 1234 and raw value [1234, 1234, 1234, 1234]', () => {
-    var mask = new CreditCardMask()
-    var options = {
-        obfuscated: false
-    }
-
-    var expected = '1234 1234 1234 1234'
-    var received = mask.getValue('1234123412341234', options)
-
-    var expectedRawValue = ['1234', '1234', '1234', '1234']
-    var receivedRawValue = mask.getRawValue(received, options)
-
-    expect(received).toBe(expected)
+    var expectedRawValue = ['4263', '9826', '4026', '9299']
+    var receivedRawValue = mask.getRawValue(received)
 
     expectedRawValue.forEach((val, index) => {
         expect(val).toBe(receivedRawValue[index])
     })
 })
 
-test('1234123412341234 obfuscated true results 1234 **** **** 1234 and raw value [1234, ****, ****, 1234]', () => {
+test('correct raw value of obfuscated formatting', () => {
     var mask = new CreditCardMask()
     var options = {
         obfuscated: true
     }
 
-    var expected = '1234 **** **** 1234'
-    var received = mask.getValue('1234123412341234', options)
+    var received = mask.getValue(testCards.visa, options)
 
-    var expectedRawValue = ['1234', '****', '****', '1234']
+    var expectedRawValue = ['4263', '****', '****', '9299']
     var receivedRawValue = mask.getRawValue(received, options)
-
-    expect(received).toBe(expected)
 
     expectedRawValue.forEach((val, index) => {
         expect(val).toBe(receivedRawValue[index])
     })
 })
 
-test('getMask returns 9999 9999 9999 9999', () => {
+test('returns correct default regular mask', () => {
     var mask = new CreditCardMask()
     var expected = '9999 9999 9999 9999'
     var received = mask.getMask()
@@ -81,26 +68,42 @@ test('getMask returns 9999 9999 9999 9999', () => {
     expect(received).toBe(expected)
 })
 
-test('getMask obfuscated returns 9999 **** **** 9999', () => {
+test('returns correct default obfuscated mask', () => {
     var mask = new CreditCardMask()
     var expected = '9999 **** **** 9999'
-    var received = mask.getMask('', { obfuscated: true })
+    var received = mask.getMask(null, { obfuscated: true })
 
     expect(received).toBe(expected)
 })
 
-test('get masked value with amex issuer must return 1234 123456 12345', () => {
+test('basic formatting of amex card', () => {
     var mask = new CreditCardMask()
-    var expected = '1234 123456 12345'
-    var received = mask.getValue('123412345612345', { issuer: 'amex' })
+    var expected = '3742 454554 00126'
+    var received = mask.getValue(testCards.amex)
 
     expect(received).toBe(expected)
 })
 
-test('getMask with diners issuer must return 1234 123456 1234', () => {
+test('obfuscated formatting of amex card', () => {
     var mask = new CreditCardMask()
-    var expected = '1234 123456 1234'
-    var received = mask.getValue('12341234561234', { issuer: 'diners' })
+    var expected = '3742 ****** 00126'
+    var received = mask.getValue(testCards.amex, { obfuscated: true })
+
+    expect(received).toBe(expected)
+})
+
+test('basic formatting of mastercard card', () => {
+    var mask = new CreditCardMask()
+    var expected = '5425 2334 3010 9903'
+    var received = mask.getValue(testCards.mastercard)
+
+    expect(received).toBe(expected)
+})
+
+test('basic formatting of maestro card', () => {
+    var mask = new CreditCardMask()
+    var expected = '6759 6498 2643 8453'
+    var received = mask.getValue(testCards.maestro)
 
     expect(received).toBe(expected)
 })

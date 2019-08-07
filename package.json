@@ -36,21 +36,21 @@
     },
     "homepage": "https://github.com/benhurott/react-native-masked-text#readme",
     "dependencies": {
+        "credit-card-type": "^8.2.0",
         "moment": "2.19.3",
         "tinymask": "^1.0.2"
     },
     "devDependencies": {
-        "@types/react-native": "*",
         "@types/react": "*",
+        "@types/react-native": "*",
         "babel-cli": "^6.26.0",
-        "rimraf": "^2.6.2",
-        "react": "16.3.1",
-        "react-native": "0.55.4",
         "babel-jest": "23.4.2",
         "babel-preset-react-native": "4.0.0",
         "jest": "23.5.0",
+        "react": "16.3.1",
+        "react-native": "0.55.4",
         "react-test-renderer": "16.3.1",
-        "react-native-masked-text": "1.9.0"
+        "rimraf": "^2.6.2"
     },
     "jest": {
         "preset": "react-native"
