@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+## [1.13.0] - 2019-08-13
+
+### Chore
+
+- [BREAKING CHANGE] Migrating from `moment` to `date-and-time`.
+    - Thanks to [Marcin Krysiak](https://github.com/marcinkrysiak1979) for contributing!
+
+### Fix
+
+- [#184](https://github.com/benhurott/react-native-masked-text/issues/184) TextInputMask doesnt render mask correctly when type change.
+    - Thanks to [Rodrigo Weber](https://github.com/RodrigoAWeber) for contributing!
+
+### Docs
+
+- Fixing documentaion link.
+    - Thanks to [Luan Curti](https://github.com/luancurti) for contributing!
+
 ## [1.12.5] - 2019-08-03
 
 ### Fix

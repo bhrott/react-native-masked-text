@@ -535,7 +535,7 @@ console.log(numberValue) // Number
 
 Mask: `accept only numbers`
 
-Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/ZipCode.js)):
+Sample code ([source](https://github.com/benhurott/react-native-masked-text-samples/blob/master/ReactNativeMaskedTextSamples/Samples/OnlyNumbers.js)):
 
 
 ```jsx
