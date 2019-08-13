@@ -1,9 +1,9 @@
 import { DatetimeMask } from '../../lib/masks'
-var moment = require('moment')
+import date from 'date-and-time';
 
 function compareMomentObj(dateTimeA, dateTimeB) {
-    var momentA = moment(dateTimeA, 'DD/MM/YYYY')
-    var momentB = moment(dateTimeB, 'DD/MM/YYYY')
+    var momentA = new Date(dateTimeA)
+    var momentB = new Date(dateTimeB)
     if (momentA > momentB) return 1
     else if (momentA < momentB) return -1
     else return 0
@@ -94,7 +94,7 @@ test('01011990174030 with format DD/MM/YYYY HH:mm:ss results 01/01/1990 17:40:30
     var expected = '01/01/1990 17:40:30'
     var received = mask.getValue('01011990174030')
 
-    var expectedRawValue = moment(received, 'DD/MM/YYYY HH:mm:ss', true)
+    var expectedRawValue = date.parse(received, 'DD/MM/YYYY HH:mm:ss')
     var receivedRawValue = mask.getRawValue(received)
 
     expect(received).toBe(expected)
