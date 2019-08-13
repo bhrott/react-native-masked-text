@@ -4,6 +4,11 @@
 
 ## [1.13.0] - 2019-08-13
 
+### Fix
+
+- [#184](https://github.com/benhurott/react-native-masked-text/issues/184) TextInputMask doesnt render mask correctly when type change.
+    - Thanks to [Rodrigo Weber](https://github.com/RodrigoAWeber) for contributing!
+
 ### Docs
 
 - Fixing documentaion link.
