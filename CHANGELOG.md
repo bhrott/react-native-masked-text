@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## [1.13.0] - 2019-08-13
+
+### Docs
+
+- Fixing documentaion link.
+    - Thanks to [Luan Curti](https://github.com/luancurti) for contributing!
+
 ## [1.12.5] - 2019-08-03
 
 ### Fix
