@@ -7,6 +7,32 @@
 
 This is a simple masked text (normal text and input text) component for React-Native.
 
+## Contents
+- [Install](#install)
+- [Usage](#usage-textinputmask)
+  - [Cel Phone](#cel-phone)
+  - [CPF](#cpf)
+  - [CNPJ](#cnpj)
+  - [Credit Card](#credit-card)
+  - [Custom](#custom)
+  - [Datetime](#datetime)
+  - [Money](#money)
+  - [Only Numbers](#only-numbers)
+  - [Zip Code](#zip-code)
+- [Utils](#-utils)
+  - [Including the rawText in onChangeText](#including-the-rawtext-in-onchangetext-1120)
+  - [Getting the TextInput instance](#getting-the-textinput-instance)
+  - [Blocking user to add character](#blocking-user-to-add-character)
+  - [Using custom text inputs](#using-custom-text-inputs)
+  - [About the normal text input props](#about-the-normal-text-input-props)
+  - [Code Samples](#code-samples)
+- [Usage (TextMask)](#usage-textmask)
+- [Extra (MaskService)](#extra-maskservice)
+- [Throubleshooting](#throubleshooting)
+- [Changelog](#changelog)
+- [Thanks to](#thanks-to)
+
+
 ## Supported Versions
 
 React-native: 0.32.0 or higher
