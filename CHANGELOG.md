@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## [1.13.1] - 2019-09-07
+
+### Docs
+
+- Adding table of contents.
+    - Thanks to [Adem ilter](https://github.com/ademilter) for contributing!
+
 ## [1.13.0] - 2019-08-13
 
 ### Chore
