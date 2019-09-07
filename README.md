@@ -510,8 +510,7 @@ Sample code ([source](https://github.com/benhurott/react-native-masked-text-samp
     separator: ',',
     delimiter: '.',
     unit: 'R$',
-    suffixUnit: '',
-    emptyValue: '',
+    suffixUnit: ''
   }}
   value={this.state.advanced}
   onChangeText={text => {
@@ -531,7 +530,6 @@ Sample code ([source](https://github.com/benhurott/react-native-masked-text-samp
 | delimiter | string | no | `.` | The thousand separator |
 | unit | string | no | `R$` | The prefix text |
 | suffixUnit | string | no | `''` | The sufix text |
-| emptyValue | string | no | `0` | The empty field value |
 
 
 #### Methods
