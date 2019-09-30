@@ -745,7 +745,7 @@ If you want, we expose the `MaskService`. You can use it:
 
 -   static toMask(type, value, settings): mask a value.
     -   `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)
-    -   `value` (String, required): the value to be masked
+    -   `value` (Number, required): the value to be masked
     -   `settings` (Object, optional): if the mask type accepts options, pass it in the settings parameter
 -   static toRawValue(type, maskedValue, settings): get the raw value of a masked value.
     -   `type` (String, required): the type of the mask (`cpf`, `datetime`, etc...)

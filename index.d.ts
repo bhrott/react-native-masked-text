@@ -72,14 +72,14 @@ export class TextMask extends React.Component<TextInputMaskProps> {}
 export namespace MaskService {
     function toMask(
         type: string,
-        value: string,
+        value: number,
         options?: TextInputMaskOptionProp
     ): string
     function toRawValue(
         type: string,
         maskedValue: string,
         options?: TextInputMaskOptionProp
-    ): string
+    ): number
     function isValid(
         type: string,
         value: string,
@@ -90,7 +90,7 @@ export namespace MaskService {
 // TextInputMaskMethods
 export class TextInputMaskMethods {
     getElement(): TextInput
-    getRawValue(): string
+    getRawValue(): number
     isValid(): boolean
 }
 
