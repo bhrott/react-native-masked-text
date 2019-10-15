@@ -71,17 +71,17 @@ export class TextMask extends React.Component<TextInputMaskProps> {}
 // MaskService
 export namespace MaskService {
     function toMask(
-        type: string,
+        type: TextInputMaskTypeProp,
         value: string,
         options?: TextInputMaskOptionProp
     ): string
     function toRawValue(
-        type: string,
+        type: TextInputMaskTypeProp,
         maskedValue: string,
         options?: TextInputMaskOptionProp
     ): string
     function isValid(
-        type: string,
+        type: TextInputMaskTypeProp,
         value: string,
         options?: TextInputMaskOptionProp
     ): boolean
