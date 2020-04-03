@@ -7,6 +7,11 @@
 
 This is a simple masked text (normal text and input text) component for React-Native.
 
+## Alert
+Hey guys!
+
+Unfortunatelly I'm not developing js apps anymore. This repo will not receive updates anymore.
+
 ## Supported Versions
 
 React-native: 0.32.0 or higher
