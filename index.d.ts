@@ -20,6 +20,7 @@ export type TextInputMaskTypeProp =
     | 'cel-phone'
     | 'datetime'
     | 'custom'
+    | 'only-letters'
 
 // Option prop of TextInputMask.
 export interface TextInputMaskOptionProp {
