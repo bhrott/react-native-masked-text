@@ -15,6 +15,7 @@ export type TextInputMaskTypeProp =
     | 'cpf'
     | 'cnpj'
     | 'zip-code'
+    | 'no-mask'
     | 'only-numbers'
     | 'money'
     | 'cel-phone'
