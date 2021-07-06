@@ -104,3 +104,7 @@ export class TextMaskMethods {
 
 // TextMaskInstance
 export type TextMaskInstance = TextMaskMethods | null
+
+export function validateCpf(cpf: string): boolean;
+
+export function validateCnpj(cnpj: string): boolean;
