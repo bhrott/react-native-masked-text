@@ -1,6 +1,6 @@
 {
     "name": "react-native-masked-text",
-    "version": "1.12.3",
+    "version": "1.12.3_1",
     "description": "Text and TextInput with mask for React Native applications",
     "licenses": [
         {
@@ -37,7 +37,7 @@
     "homepage": "https://github.com/benhurott/react-native-masked-text#readme",
     "dependencies": {
         "credit-card-type": "^8.2.0",
-        "moment": "2.19.3",
+        "moment": "2.29.2",
         "tinymask": "^1.0.2"
     },
     "devDependencies": {
