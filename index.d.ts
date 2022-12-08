@@ -63,7 +63,7 @@ export interface TextInputMaskProps extends Pick<TextInputProps, Exclude<keyof T
 }
 
 // TextInputMask Component
-export class TextInputMask extends React.Component<TextInputMaskProps> {}
+export class TextInputMask extends TextInputMaskMethods {}
 
 // TextMask
 export class TextMask extends React.Component<TextInputMaskProps> {}
@@ -88,9 +88,15 @@ export namespace MaskService {
 }
 
 // TextInputMaskMethods
-export class TextInputMaskMethods {
+export class TextInputMaskMethods extends React.Component<TextInputMaskProps> {
     getElement(): TextInput
-    getRawValue(): string
+    /**
+     * Gets the the raw value of the text in the input.
+     * E.g for money, will return the value, for datetime, will return a Date object, etc
+     *
+     * @returns {unknown} Raw value of input
+     */
+    getRawValue(): unknown;
     isValid(): boolean
 }
 
